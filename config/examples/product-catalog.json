@@ -1,0 +1,170 @@
+{
+  "categories": {
+    "electronics": {
+      "display_name": "Electronics",
+      "icon": "fas fa-laptop",
+      "emoji_fallback": "💻",
+      "color": "#3498db",
+      "description": "Electronic devices and gadgets"
+    },
+    "clothing": {
+      "display_name": "Clothing",
+      "icon": "fas fa-tshirt",
+      "emoji_fallback": "👕",
+      "color": "#e74c3c",
+      "description": "Apparel and fashion items"
+    },
+    "home-garden": {
+      "display_name": "Home & Garden",
+      "icon": "fas fa-home",
+      "emoji_fallback": "🏠",
+      "color": "#27ae60",
+      "description": "Home improvement and garden supplies"
+    },
+    "books": {
+      "display_name": "Books",
+      "icon": "fas fa-book",
+      "emoji_fallback": "📚",
+      "color": "#f39c12",
+      "description": "Books and educational materials"
+    },
+    "sports": {
+      "display_name": "Sports & Outdoors",
+      "icon": "fas fa-running",
+      "emoji_fallback": "🏃",
+      "color": "#9b59b6",
+      "description": "Sports equipment and outdoor gear"
+    },
+    "health-beauty": {
+      "display_name": "Health & Beauty",
+      "icon": "fas fa-heart",
+      "emoji_fallback": "💄",
+      "color": "#e91e63",
+      "description": "Health and beauty products"
+    },
+    "automotive": {
+      "display_name": "Automotive",
+      "icon": "fas fa-car",
+      "emoji_fallback": "🚗",
+      "color": "#34495e",
+      "description": "Car parts and automotive accessories"
+    },
+    "toys-games": {
+      "display_name": "Toys & Games",
+      "icon": "fas fa-gamepad",
+      "emoji_fallback": "🎮",
+      "color": "#ff6b6b",
+      "description": "Toys, games, and entertainment"
+    }
+  },
+  "field_mappings": {
+    "category": "category",
+    "name": "product_name",
+    "description": "description",
+    "price": "price",
+    "sku": "sku",
+    "brand": "brand",
+    "stock_quantity": "stock_quantity",
+    "rating": "rating",
+    "availability": "availability"
+  },
+  "display_fields": ["name", "brand", "price", "description", "rating"],
+  "search_fields": ["name", "brand", "description", "sku"],
+  "required_fields": ["category", "name", "price", "sku"],
+  "field_definitions": {
+    "category": {
+      "display_name": "Category",
+      "type": "string",
+      "searchable": true,
+      "required": true,
+      "description": "Product category classification"
+    },
+    "name": {
+      "display_name": "Product Name",
+      "type": "string",
+      "searchable": true,
+      "required": true,
+      "description": "Name of the product"
+    },
+    "description": {
+      "display_name": "Description",
+      "type": "text",
+      "searchable": true,
+      "required": false,
+      "description": "Detailed product description"
+    },
+    "price": {
+      "display_name": "Price",
+      "type": "currency",
+      "searchable": false,
+      "required": true,
+      "description": "Product price in USD"
+    },
+    "sku": {
+      "display_name": "SKU",
+      "type": "string",
+      "searchable": true,
+      "required": true,
+      "description": "Stock Keeping Unit identifier"
+    },
+    "brand": {
+      "display_name": "Brand",
+      "type": "string",
+      "searchable": true,
+      "required": false,
+      "description": "Product brand or manufacturer"
+    },
+    "stock_quantity": {
+      "display_name": "Stock",
+      "type": "number",
+      "searchable": false,
+      "required": false,
+      "description": "Available stock quantity"
+    },
+    "rating": {
+      "display_name": "Rating",
+      "type": "number",
+      "searchable": false,
+      "required": false,
+      "description": "Customer rating (1-5 stars)"
+    },
+    "availability": {
+      "display_name": "Availability",
+      "type": "string",
+      "searchable": true,
+      "required": false,
+      "description": "Product availability status"
+    }
+  },
+  "ui": {
+    "title": "Product Catalog Search",
+    "subtitle": "Find products quickly and easily",
+    "theme": {
+      "primary_color": "#2c3e50",
+      "secondary_color": "#3498db",
+      "accent_color": "#e74c3c",
+      "background_color": "#ecf0f1",
+      "text_color": "#2c3e50",
+      "border_color": "#bdc3c7"
+    },
+    "layout": {
+      "categories_per_row": 4,
+      "show_category_counts": true,
+      "enable_suggestions": true,
+      "show_search_stats": true,
+      "compact_mode": false
+    },
+    "search": {
+      "placeholder_text": "Search products by name, brand, or SKU...",
+      "min_search_length": 2,
+      "search_delay_ms": 300,
+      "max_results": 50
+    },
+    "categories": {
+      "show_icons": true,
+      "show_emoji_fallback": true,
+      "show_counts": true,
+      "button_style": "rounded"
+    }
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "ui": {
+    "title": "風来のシレン アイテム検索",
+    "subtitle": "アイテムを素早く検索できます",
+    "theme": {
+      "primary_color": "#3498db",
+      "secondary_color": "#2ecc71",
+      "accent_color": "#e74c3c",
+      "background_color": "#ecf0f1",
+      "text_color": "#2c3e50",
+      "border_color": "#bdc3c7"
+    },
+    "layout": {
+      "categories_per_row": 5,
+      "show_category_counts": true,
+      "enable_suggestions": true,
+      "show_search_stats": true,
+      "compact_mode": false
+    },
+    "search": {
+      "placeholder_text": "アイテム名や説明で検索...",
+      "min_search_length": 1,
+      "search_delay_ms": 300,
+      "max_results": 100
+    },
+    "categories": {
+      "show_icons": true,
+      "show_emoji_fallback": true,
+      "show_counts": true,
+      "button_style": "rounded"
+    }
+  }
+}

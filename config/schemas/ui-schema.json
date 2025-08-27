@@ -1,0 +1,138 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "UI Configuration Schema",
+  "type": "object",
+  "properties": {
+    "ui": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Application title"
+        },
+        "subtitle": {
+          "type": "string",
+          "description": "Application subtitle"
+        },
+        "theme": {
+          "type": "object",
+          "properties": {
+            "primary_color": {
+              "type": "string",
+              "pattern": "^#[0-9a-fA-F]{6}$",
+              "description": "Primary theme color"
+            },
+            "secondary_color": {
+              "type": "string",
+              "pattern": "^#[0-9a-fA-F]{6}$",
+              "description": "Secondary theme color"
+            },
+            "accent_color": {
+              "type": "string",
+              "pattern": "^#[0-9a-fA-F]{6}$",
+              "description": "Accent theme color"
+            },
+            "background_color": {
+              "type": "string",
+              "pattern": "^#[0-9a-fA-F]{6}$",
+              "description": "Background color"
+            },
+            "text_color": {
+              "type": "string",
+              "pattern": "^#[0-9a-fA-F]{6}$",
+              "description": "Text color"
+            },
+            "border_color": {
+              "type": "string",
+              "pattern": "^#[0-9a-fA-F]{6}$",
+              "description": "Border color"
+            }
+          },
+          "required": ["primary_color", "secondary_color", "accent_color"],
+          "additionalProperties": false
+        },
+        "layout": {
+          "type": "object",
+          "properties": {
+            "categories_per_row": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 10,
+              "description": "Number of category buttons per row"
+            },
+            "show_category_counts": {
+              "type": "boolean",
+              "description": "Whether to show item counts on category buttons"
+            },
+            "enable_suggestions": {
+              "type": "boolean",
+              "description": "Whether to enable search suggestions"
+            },
+            "show_search_stats": {
+              "type": "boolean",
+              "description": "Whether to show search statistics"
+            },
+            "compact_mode": {
+              "type": "boolean",
+              "description": "Whether to use compact layout"
+            }
+          },
+          "additionalProperties": false
+        },
+        "search": {
+          "type": "object",
+          "properties": {
+            "placeholder_text": {
+              "type": "string",
+              "description": "Placeholder text for search input"
+            },
+            "min_search_length": {
+              "type": "integer",
+              "minimum": 0,
+              "description": "Minimum characters before search starts"
+            },
+            "search_delay_ms": {
+              "type": "integer",
+              "minimum": 0,
+              "description": "Delay in milliseconds before search executes"
+            },
+            "max_results": {
+              "type": "integer",
+              "minimum": 1,
+              "description": "Maximum number of search results to show"
+            }
+          },
+          "additionalProperties": false
+        },
+        "categories": {
+          "type": "object",
+          "properties": {
+            "show_icons": {
+              "type": "boolean",
+              "description": "Whether to show category icons"
+            },
+            "show_emoji_fallback": {
+              "type": "boolean",
+              "description": "Whether to show emoji fallback when icons fail"
+            },
+            "show_counts": {
+              "type": "boolean",
+              "description": "Whether to show item counts"
+            },
+            "button_style": {
+              "type": "string",
+              "enum": ["rounded", "square", "pill"],
+              "description": "Style of category buttons"
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "required": ["title"],
+      "additionalProperties": false
+    }
+  },
+  "required": ["ui"],
+  "additionalProperties": false
+}

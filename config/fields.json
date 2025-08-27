@@ -1,0 +1,33 @@
+{
+  "field_mappings": {
+    "category": "category",
+    "name": "name",
+    "description": "description"
+  },
+  "display_fields": ["name", "description"],
+  "search_fields": ["name", "description"],
+  "required_fields": ["category", "name"],
+  "field_definitions": {
+    "category": {
+      "display_name": "カテゴリ",
+      "type": "string",
+      "searchable": true,
+      "required": true,
+      "description": "アイテムのカテゴリ分類"
+    },
+    "name": {
+      "display_name": "名前",
+      "type": "string",
+      "searchable": true,
+      "required": true,
+      "description": "アイテムの名前"
+    },
+    "description": {
+      "display_name": "説明",
+      "type": "text",
+      "searchable": true,
+      "required": false,
+      "description": "アイテムの詳細説明"
+    }
+  }
+}

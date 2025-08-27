@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ローグライクゲーム アイテム検索データベース</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- ヘッダー -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <i class="fas fa-search"></i>
+                <h1>ローグライクゲーム アイテム検索</h1>
+            </div>
+            <p class="subtitle">ローグライクゲーム アイテムデータベース</p>
+        </div>
+    </header>
+
+    <!-- メインコンテンツ -->
+    <main class="main-content">
+        <div class="container">
+            <!-- 検索セクション -->
+            <section class="search-section">
+                <div class="search-container">
+                    <div class="search-box">
+                        <i class="fas fa-search search-icon"></i>
+                        <input type="text" id="search-input" placeholder="アイテム名や値段で検索..." autocomplete="off">
+                        <div class="search-suggestions" id="search-suggestions">
+                            <div class="suggestion-item" data-query="武器">⚔️ 武器</div>
+                            <div class="suggestion-item" data-query="盾">🛡️ 盾</div>
+                            <div class="suggestion-item" data-query="壺">🏺 壺</div>
+                            <div class="suggestion-item" data-query="草・種">🌿 草・種</div>
+                            <div class="suggestion-item" data-query="杖">🪄 杖</div>
+                            <div class="suggestion-item" data-query="巻物">📜 巻物</div>
+                        </div>
+                    </div>
+                    <div class="search-stats" id="search-stats"></div>
+                </div>
+            </section>
+
+            <!-- ジャンル別ナビゲーション -->
+            <section class="category-navigation" id="category-navigation">
+                <div class="navigation-content">
+                    <h3><i class="fas fa-th-large"></i> ジャンル別検索</h3>
+                    <div class="category-buttons">
+                        <button class="category-btn" data-query="武器" data-category="weapon">
+                            <div class="category-icon">
+                                <i class="fas fa-khanda" aria-hidden="true"></i>
+                                <span class="emoji-fallback">⚔️</span>
+                            </div>
+                            <span class="category-name">武器</span>
+                            <span class="category-count">{{ category_counts['武器'] }}種類</span>
+                        </button>
+                        <button class="category-btn" data-query="盾" data-category="shield">
+                            <div class="category-icon">
+                                <i class="fas fa-shield-alt" aria-hidden="true"></i>
+                                <span class="emoji-fallback">🛡️</span>
+                            </div>
+                            <span class="category-name">盾</span>
+                            <span class="category-count">{{ category_counts['盾'] }}種類</span>
+                        </button>
+                        <button class="category-btn" data-query="壺" data-category="pot">
+                            <div class="category-icon">
+                                <i class="fas fa-jar" aria-hidden="true"></i>
+                                <span class="emoji-fallback">🏺</span>
+                            </div>
+                            <span class="category-name">壺</span>
+                            <span class="category-count">{{ category_counts['壺'] }}種類</span>
+                        </button>
+                        <button class="category-btn" data-query="草・種" data-category="herb">
+                            <div class="category-icon">
+                                <i class="fas fa-leaf" aria-hidden="true"></i>
+                                <span class="emoji-fallback">🌿</span>
+                            </div>
+                            <span class="category-name">草・種</span>
+                            <span class="category-count">{{ category_counts['草・種'] }}種類</span>
+                        </button>
+                        <button class="category-btn" data-query="杖" data-category="staff">
+                            <div class="category-icon">
+                                <i class="fas fa-magic" aria-hidden="true"></i>
+                                <span class="emoji-fallback">🪄</span>
+                            </div>
+                            <span class="category-name">杖</span>
+                            <span class="category-count">{{ category_counts['杖'] }}種類</span>
+                        </button>
+                        <button class="category-btn" data-query="巻物" data-category="scroll">
+                            <div class="category-icon">
+                                <i class="fas fa-scroll" aria-hidden="true"></i>
+                                <span class="emoji-fallback">📜</span>
+                            </div>
+                            <span class="category-name">巻物</span>
+                            <span class="category-count">{{ category_counts['巻物'] }}種類</span>
+                        </button>
+                        <button class="category-btn" data-query="腕輪" data-category="bracelet">
+                            <div class="category-icon">
+                                <i class="fas fa-ring" aria-hidden="true"></i>
+                                <span class="emoji-fallback">💍</span>
+                            </div>
+                            <span class="category-name">腕輪</span>
+                            <span class="category-count">{{ category_counts['腕輪'] }}種類</span>
+                        </button>
+                        <button class="category-btn" data-query="矢" data-category="arrow">
+                            <div class="category-icon">
+                                <i class="fas fa-location-arrow" aria-hidden="true"></i>
+                                <span class="emoji-fallback">🏹</span>
+                            </div>
+                            <span class="category-name">矢</span>
+                            <span class="category-count">{{ category_counts['矢'] }}種類</span>
+                        </button>
+                        <button class="category-btn" data-query="にぎり" data-category="onigiri">
+                            <div class="category-icon">
+                                <i class="fas fa-cookie-bite" aria-hidden="true"></i>
+                                <span class="emoji-fallback">🍙</span>
+                            </div>
+                            <span class="category-name">にぎり</span>
+                            <span class="category-count">{{ category_counts['にぎり'] }}種類</span>
+                        </button>
+                        <button class="category-btn" data-query="その他" data-category="other">
+                            <div class="category-icon">
+                                <i class="fas fa-ellipsis-h" aria-hidden="true"></i>
+                                <span class="emoji-fallback">📦</span>
+                            </div>
+                            <span class="category-name">その他</span>
+                            <span class="category-count">{{ category_counts['その他'] }}種類</span>
+                        </button>
+                    </div>
+                    <p class="navigation-text">
+                        <i class="fas fa-mouse-pointer"></i>
+                        ジャンルをクリックして該当アイテムを表示
+                    </p>
+                </div>
+            </section>
+
+            <!-- 検索結果 -->
+            <section class="results-section">
+                <div id="results-container"></div>
+            </section>
+        </div>
+    </main>
+
+    <!-- フッター -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>© 2025 ローグライクゲーム アイテム検索データベース</p>
+            <p class="footer-note">ローグライクゲーム のアイテム情報を検索できます</p>
+        </div>
+    </footer>
+
+    <script>
+        // DOM要素の取得
+        const searchInput = document.getElementById('search-input');
+        const resultsContainer = document.getElementById('results-container');
+        const searchStats = document.getElementById('search-stats');
+        const categoryNavigation = document.getElementById('category-navigation');
+        const searchSuggestions = document.getElementById('search-suggestions');
+
+        let debounceTimer; // デバウンス処理のためのタイマー
+
+        // 検索入力イベント
+        searchInput.addEventListener('input', () => {
+            clearTimeout(debounceTimer);
+
+            const keyword = searchInput.value.trim();
+
+            // 検索候補の表示/非表示
+            if (keyword.length === 0) {
+                showSuggestions();
+                document.getElementById('category-navigation').style.display = 'block';
+                // アクティブ状態をリセット
+                document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
+                resultsContainer.innerHTML = '';
+                searchStats.innerHTML = '';
+                return;
+            } else {
+                hideSuggestions();
+                document.getElementById('category-navigation').style.display = 'none';
+            }
+
+            // ローディング表示
+            searchStats.innerHTML = '<i class="fas fa-spinner fa-spin"></i> 検索中...';
+
+            debounceTimer = setTimeout(async () => {
+                try {
+                    const response = await fetch(`/search?q=${encodeURIComponent(keyword)}`);
+                    if (!response.ok) {
+                        throw new Error(`サーバーエラー: ${response.status}`);
+                    }
+                    const results = await response.json();
+                    displayResults(results, keyword);
+                } catch (error) {
+                    console.error('検索処理中にエラーが発生しました:', error);
+                    resultsContainer.innerHTML = `
+                        <div class="error-message">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            <p>検索に失敗しました。しばらく時間をおいて再度お試しください。</p>
+                        </div>
+                    `;
+                    searchStats.innerHTML = '';
+                }
+            }, 300);
+        });
+
+        // プルダウン表示/非表示のヘルパー関数
+        function showSuggestions() {
+            searchSuggestions.style.display = 'block';
+            setTimeout(() => {
+                searchSuggestions.classList.add('show');
+            }, 10);
+        }
+
+        function hideSuggestions() {
+            searchSuggestions.classList.remove('show');
+            setTimeout(() => {
+                searchSuggestions.style.display = 'none';
+            }, 300);
+        }
+
+        // 検索フォーカス時の処理
+        searchInput.addEventListener('focus', () => {
+            if (searchInput.value.trim() === '') {
+                showSuggestions();
+            }
+        });
+
+        // 検索バーからフォーカスが外れた時の処理
+        searchInput.addEventListener('blur', () => {
+            // 少し遅延させて、候補クリック時の処理を優先
+            setTimeout(() => {
+                hideSuggestions();
+            }, 200);
+        });
+
+        // ページ外クリック時にプルダウンを閉じる
+        document.addEventListener('click', (event) => {
+            const searchContainer = document.querySelector('.search-container');
+            if (!searchContainer.contains(event.target)) {
+                hideSuggestions();
+            }
+        });
+
+        // 検索候補クリック
+        document.querySelectorAll('.suggestion-item').forEach(item => {
+            item.addEventListener('click', () => {
+                const query = item.getAttribute('data-query');
+                searchInput.value = query;
+                hideSuggestions(); // プルダウンを閉じる
+                searchInput.focus();
+                searchInput.dispatchEvent(new Event('input'));
+            });
+        });
+
+        // カテゴリボタンクリック
+        document.querySelectorAll('.category-btn').forEach(btn => {
+            btn.addEventListener('click', async () => {
+                const query = btn.getAttribute('data-query');
+                const category = btn.getAttribute('data-category');
+
+                // ボタンにアクティブ状態を追加
+                document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                searchInput.value = query;
+                hideSuggestions(); // プルダウンを閉じる
+                document.getElementById('category-navigation').style.display = 'none';
+
+                // ローディング表示
+                searchStats.innerHTML = '<i class="fas fa-spinner fa-spin"></i> 検索中...';
+
+                try {
+                    // カテゴリフィルタ付きで検索
+                    const response = await fetch(`/search?q=${encodeURIComponent(query)}&category=${encodeURIComponent(query)}`);
+                    if (!response.ok) {
+                        throw new Error(`サーバーエラー: ${response.status}`);
+                    }
+                    const results = await response.json();
+                    displayResults(results, query);
+                } catch (error) {
+                    console.error('検索処理中にエラーが発生しました:', error);
+                    resultsContainer.innerHTML = `
+                        <div class="error-message">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            <p>検索に失敗しました。しばらく時間をおいて再度お試しください。</p>
+                        </div>
+                    `;
+                    searchStats.innerHTML = '';
+                }
+            });
+        });
+
+        // 結果表示関数
+        function displayResults(results, keyword) {
+            resultsContainer.innerHTML = '';
+
+            // 検索統計
+            const resultCount = results.length;
+            const categoryInfo = getCategoryInfo(keyword);
+            searchStats.innerHTML = `
+                <i class="fas fa-chart-bar"></i> 
+                ${categoryInfo}「${keyword}」の検索結果: ${resultCount}件
+            `;
+
+            if (resultCount === 0) {
+                resultsContainer.innerHTML = `
+                    <div class="no-results">
+                        <i class="fas fa-search"></i>
+                        <h3>該当するアイテムが見つかりませんでした</h3>
+                        <p>別のキーワードで検索してみてください</p>
+                        <div class="suggestion-keywords">
+                            <span class="keyword-tag" onclick="searchKeyword('武器')">武器</span>
+                            <span class="keyword-tag" onclick="searchKeyword('盾')">盾</span>
+                            <span class="keyword-tag" onclick="searchKeyword('壺')">壺</span>
+                            <span class="keyword-tag" onclick="searchKeyword('草')">草</span>
+                        </div>
+                    </div>
+                `;
+                return;
+            }
+
+            // 結果リスト作成
+            const resultsGrid = document.createElement('div');
+            resultsGrid.className = 'results-grid';
+
+            results.forEach((item, index) => {
+                const resultCard = document.createElement('div');
+                resultCard.className = 'result-card';
+                resultCard.style.animationDelay = `${index * 0.1}s`;
+
+                // アイテムタイプのアイコン決定
+                let icon = '📦';
+                if (item.name.includes('武器')) icon = '⚔️';
+                else if (item.name.includes('盾')) icon = '🛡️';
+                else if (item.name.includes('壺')) icon = '🏺';
+                else if (item.name.includes('草') || item.name.includes('種')) icon = '🌿';
+
+                // より具体的なアイコン判定
+                if (item.name.includes('つるはし')) icon = '⛏️';
+                else if (item.name.includes('こん棒')) icon = '🏏';
+                else if (item.name.includes('剣')) icon = '⚔️';
+                else if (item.name.includes('かまいたち')) icon = '🌪️';
+                else if (item.name.includes('保存')) icon = '📦';
+                else if (item.name.includes('変化')) icon = '🔄';
+                else if (item.name.includes('薬草')) icon = '🌿';
+
+                resultCard.innerHTML = `
+                    <div class="item-header">
+                        <span class="item-icon">${icon}</span>
+                        <h3 class="item-name">${highlightKeyword(item.name, keyword)}</h3>
+                    </div>
+                    <div class="item-description">
+                        ${highlightKeyword(item.description, keyword)}
+                    </div>
+                `;
+
+                resultsGrid.appendChild(resultCard);
+            });
+
+            resultsContainer.appendChild(resultsGrid);
+        }
+
+        // キーワードハイライト関数
+        function highlightKeyword(text, keyword) {
+            if (!keyword) return text;
+            const regex = new RegExp(`(${keyword})`, 'gi');
+            return text.replace(regex, '<mark>$1</mark>');
+        }
+
+        // キーワード検索関数
+        function searchKeyword(keyword) {
+            searchInput.value = keyword;
+            searchInput.focus();
+            searchInput.dispatchEvent(new Event('input'));
+        }
+
+        // カテゴリ情報を取得する関数
+        function getCategoryInfo(keyword) {
+            const categories = {
+                '武器': '⚔️ 武器カテゴリ - ',
+                '盾': '🛡️ 盾カテゴリ - ',
+                '壺': '🏺 壺カテゴリ - ',
+                '草': '🌿 草・種カテゴリ - '
+            };
+            return categories[keyword] || '';
+        }
+
+        // 初期表示
+        document.addEventListener('DOMContentLoaded', () => {
+            // 初期状態ではプルダウンは非表示
+            hideSuggestions();
+        });
+    </script>
+
+</body>
+
+</html>

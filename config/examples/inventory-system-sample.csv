@@ -1,0 +1,32 @@
+item_type,item_name,description,current_quantity,storage_location,status,unit_cost,total_value,supplier,reorder_level,max_stock_level,last_inventory_date,barcode_sku
+raw-materials,Steel Sheets 4x8ft,Cold-rolled steel sheets for manufacturing,45,Warehouse A-1,Available,125.50,5647.50,MetalCorp Industries,10,100,2024-03-15,STL-4X8-001
+raw-materials,Aluminum Rods 1in,Aluminum rods for machining operations,120,Warehouse A-2,Available,18.75,2250.00,AlumTech Supply,25,200,2024-03-15,ALU-1IN-002
+raw-materials,Copper Wire 12AWG,Electrical copper wire for wiring assemblies,850,Warehouse B-1,Available,2.35,1997.50,ElectroWire Co,100,1000,2024-03-10,COP-12AWG-003
+raw-materials,Plastic Pellets HDPE,High-density polyethylene pellets for injection molding,2500,Warehouse C-1,Available,1.85,4625.00,PolySource Ltd,500,5000,2024-03-12,PLA-HDPE-004
+finished-goods,Widget Assembly Model A,Complete widget assembly ready for shipment,75,Finished Goods A-1,Available,45.20,3390.00,Internal Production,15,150,2024-03-18,WID-ASMA-101
+finished-goods,Control Panel Unit,Electronic control panel for industrial equipment,28,Finished Goods A-2,Available,285.00,7980.00,Internal Production,5,50,2024-03-18,CTL-PNL-102
+finished-goods,Sensor Module Type B,Temperature and pressure sensor module,156,Finished Goods B-1,Available,67.50,10530.00,Internal Production,20,200,2024-03-16,SEN-TYPB-103
+finished-goods,Motor Housing Assembly,Protective housing for electric motors,42,Finished Goods B-2,Available,92.75,3895.50,Internal Production,10,80,2024-03-17,MOT-HSG-104
+work-in-progress,Partially Machined Brackets,Brackets in various stages of machining,35,Production Floor 1,In Progress,28.40,994.00,Internal Production,0,0,2024-03-19,WIP-BRKT-201
+work-in-progress,Circuit Boards (Testing),PCBs undergoing quality testing,68,QC Department,In Progress,15.60,1060.80,Internal Production,0,0,2024-03-19,WIP-PCB-202
+work-in-progress,Painted Components,Components waiting for paint to cure,124,Paint Booth,In Progress,8.25,1023.00,Internal Production,0,0,2024-03-18,WIP-PAINT-203
+tools-equipment,CNC End Mills 1/2in,Carbide end mills for CNC machining,24,Tool Crib A,Available,45.80,1099.20,Precision Tools Inc,5,50,2024-03-14,TL-ENDM-301
+tools-equipment,Digital Calipers,Precision measuring instruments,12,Tool Crib B,Available,89.95,1079.40,MeasureTech,3,20,2024-03-14,TL-CALP-302
+tools-equipment,Torque Wrench Set,Professional torque wrench set,8,Tool Crib A,Available,156.75,1254.00,ToolMaster Pro,2,15,2024-03-14,TL-TORQ-303
+tools-equipment,Drill Bits HSS Set,High-speed steel drill bit set,15,Tool Crib C,Available,34.50,517.50,DrillTech Supply,5,30,2024-03-14,TL-DRLL-304
+office-supplies,Copy Paper A4,White copy paper for office printers,48,Office Storage,Available,12.50,600.00,Office Depot,10,100,2024-03-11,OFF-PPR-401
+office-supplies,Ballpoint Pens Blue,Blue ink ballpoint pens,240,Office Storage,Available,0.85,204.00,Staples,50,500,2024-03-11,OFF-PEN-402
+office-supplies,File Folders Manila,Manila file folders for document storage,156,Office Storage,Available,0.45,70.20,Office Max,25,300,2024-03-11,OFF-FLD-403
+office-supplies,Printer Toner HP LaserJet,Black toner cartridge for HP printers,6,Office Storage,Available,89.99,539.94,HP Direct,2,20,2024-03-11,OFF-TNR-404
+safety-equipment,Hard Hats White,OSHA-compliant hard hats,35,Safety Equipment Room,Available,18.95,663.25,SafetyFirst Corp,10,50,2024-03-13,SAF-HAT-501
+safety-equipment,Safety Glasses Clear,Impact-resistant safety glasses,78,Safety Equipment Room,Available,8.75,682.50,ProtectVision,20,100,2024-03-13,SAF-GLS-502
+safety-equipment,Work Gloves Leather,Cut-resistant leather work gloves,92,Safety Equipment Room,Available,12.40,1140.80,GloveTech,25,150,2024-03-13,SAF-GLV-503
+safety-equipment,First Aid Kits,Complete workplace first aid kits,12,Safety Equipment Room,Available,45.60,547.20,MedSupply Plus,3,25,2024-03-13,SAF-AID-504
+maintenance,Hydraulic Oil ISO 46,Hydraulic system oil for machinery,8,Maintenance Shop,Available,28.75,230.00,LubeTech,2,20,2024-03-16,MNT-OIL-601
+maintenance,Bearing Grease,High-temperature bearing grease,15,Maintenance Shop,Available,16.80,252.00,BearingCorp,5,30,2024-03-16,MNT-GRS-602
+maintenance,Replacement Belts V-Type,V-belts for conveyor systems,22,Maintenance Shop,Available,24.95,548.90,BeltMaster,5,40,2024-03-16,MNT-BLT-603
+maintenance,Air Filters Industrial,HEPA air filters for ventilation,18,Maintenance Shop,Available,67.25,1210.50,FilterPro,5,35,2024-03-16,MNT-FLT-604
+consumables,Welding Electrodes 7018,Stick welding electrodes,45,Welding Station,Available,3.25,146.25,WeldSupply Co,15,100,2024-03-17,CON-ELC-701
+consumables,Cutting Fluid,Metal cutting fluid for machining,12,Machine Shop,Available,22.50,270.00,CoolantTech,3,25,2024-03-17,CON-FLD-702
+consumables,Sandpaper Assorted,Various grit sandpaper sheets,156,Finishing Area,Available,1.85,288.60,AbrasivePro,50,300,2024-03-17,CON-SND-703
+consumables,Cleaning Solvents,Industrial cleaning solvents,8,Chemical Storage,Available,34.75,278.00,ChemClean Ltd,2,20,2024-03-17,CON-SOL-704

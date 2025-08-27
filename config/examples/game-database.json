@@ -1,0 +1,95 @@
+{
+  "title": "ローグライクゲーム アイテム検索データベース",
+  "description": "v1.1互換のゲーム専用データベース設定",
+  "use_case": "ゲームアイテム管理",
+  "categories": {
+    "武器": {
+      "display_name": "武器",
+      "icon": "fas fa-sword",
+      "emoji_fallback": "⚔️",
+      "color": "#e74c3c",
+      "description": "攻撃用の武器類"
+    },
+    "盾": {
+      "display_name": "盾", 
+      "icon": "fas fa-shield-alt",
+      "emoji_fallback": "🛡️",
+      "color": "#3498db",
+      "description": "防御用の盾類"
+    },
+    "壺": {
+      "display_name": "壺",
+      "icon": "fas fa-flask",
+      "emoji_fallback": "🏺",
+      "color": "#9b59b6",
+      "description": "様々な効果を持つ壺"
+    },
+    "巻物": {
+      "display_name": "巻物",
+      "icon": "fas fa-scroll",
+      "emoji_fallback": "📜",
+      "color": "#f39c12",
+      "description": "魔法効果のある巻物"
+    },
+    "草": {
+      "display_name": "草",
+      "icon": "fas fa-leaf",
+      "emoji_fallback": "🌿",
+      "color": "#2ecc71",
+      "description": "薬草や毒草など"
+    },
+    "杖": {
+      "display_name": "杖",
+      "icon": "fas fa-magic",
+      "emoji_fallback": "🪄",
+      "color": "#8e44ad",
+      "description": "魔法の杖類"
+    },
+    "腕輪": {
+      "display_name": "腕輪",
+      "icon": "fas fa-ring",
+      "emoji_fallback": "💍",
+      "color": "#e67e22",
+      "description": "特殊効果のある腕輪"
+    },
+    "その他": {
+      "display_name": "その他",
+      "icon": "fas fa-question",
+      "emoji_fallback": "❓",
+      "color": "#95a5a6",
+      "description": "その他のアイテム"
+    }
+  },
+  "field_mappings": {
+    "category": "category",
+    "name": "name",
+    "description": "description"
+  },
+  "display_fields": ["name", "description"],
+  "search_fields": ["name", "description"],
+  "required_fields": ["category", "name"],
+  "ui": {
+    "title": "ローグライクゲーム アイテム検索",
+    "subtitle": "アイテムを素早く検索できます",
+    "theme": {
+      "primary_color": "#3498db",
+      "secondary_color": "#2ecc71",
+      "accent_color": "#e74c3c"
+    },
+    "layout": {
+      "categories_per_row": 4,
+      "show_category_counts": true,
+      "enable_suggestions": true
+    },
+    "search": {
+      "placeholder": "アイテム名で検索...",
+      "debounce_ms": 300,
+      "min_query_length": 1
+    },
+    "categories": {
+      "show_icons": true,
+      "show_emoji_fallback": true,
+      "show_descriptions": false
+    }
+  }
+}

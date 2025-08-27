@@ -1,0 +1,74 @@
+{
+  "categories": {
+    "武器": {
+      "display_name": "武器",
+      "icon": "fas fa-sword",
+      "emoji_fallback": "⚔️",
+      "color": "#e74c3c",
+      "description": "攻撃用の武器類"
+    },
+    "盾": {
+      "display_name": "盾",
+      "icon": "fas fa-shield-alt",
+      "emoji_fallback": "🛡️",
+      "color": "#3498db",
+      "description": "防御用の盾類"
+    },
+    "矢": {
+      "display_name": "矢",
+      "icon": "fas fa-arrow-up",
+      "emoji_fallback": "🏹",
+      "color": "#f39c12",
+      "description": "射撃用の矢類"
+    },
+    "腕輪": {
+      "display_name": "腕輪",
+      "icon": "fas fa-ring",
+      "emoji_fallback": "💍",
+      "color": "#9b59b6",
+      "description": "特殊効果のある腕輪類"
+    },
+    "杖": {
+      "display_name": "杖",
+      "icon": "fas fa-magic",
+      "emoji_fallback": "🪄",
+      "color": "#8e44ad",
+      "description": "魔法効果のある杖類"
+    },
+    "壺": {
+      "display_name": "壺",
+      "icon": "fas fa-vial",
+      "emoji_fallback": "🏺",
+      "color": "#16a085",
+      "description": "アイテム保存や特殊効果のある壺類"
+    },
+    "巻物": {
+      "display_name": "巻物",
+      "icon": "fas fa-scroll",
+      "emoji_fallback": "📜",
+      "color": "#f1c40f",
+      "description": "一度使用すると消える巻物類"
+    },
+    "草・種": {
+      "display_name": "草・種",
+      "icon": "fas fa-seedling",
+      "emoji_fallback": "🌱",
+      "color": "#27ae60",
+      "description": "回復や特殊効果のある草・種類"
+    },
+    "にぎり": {
+      "display_name": "にぎり",
+      "icon": "fas fa-cookie-bite",
+      "emoji_fallback": "🍙",
+      "color": "#e67e22",
+      "description": "満腹度を回復するおにぎり類"
+    },
+    "その他": {
+      "display_name": "その他",
+      "icon": "fas fa-question",
+      "emoji_fallback": "❓",
+      "color": "#95a5a6",
+      "description": "その他のアイテム"
+    }
+  }
+}

@@ -1,0 +1,26 @@
+category,product_name,description,price,sku,brand,stock_quantity,rating,availability
+electronics,iPhone 15 Pro,Latest Apple smartphone with advanced camera system and A17 Pro chip,999.00,APL-IP15P-128,Apple,25,4.8,In Stock
+electronics,Samsung Galaxy S24,Premium Android smartphone with AI-powered features,899.00,SAM-GS24-256,Samsung,18,4.7,In Stock
+electronics,MacBook Air M3,Ultra-thin laptop with M3 chip and all-day battery life,1299.00,APL-MBA-M3-256,Apple,12,4.9,In Stock
+electronics,Dell XPS 13,Premium ultrabook with InfinityEdge display,1199.00,DEL-XPS13-512,Dell,8,4.6,In Stock
+electronics,Sony WH-1000XM5,Industry-leading noise canceling wireless headphones,399.00,SNY-WH1000XM5,Sony,35,4.8,In Stock
+clothing,Levi's 501 Original Jeans,Classic straight-leg denim jeans,69.50,LEV-501-32W-32L,Levi's,45,4.5,In Stock
+clothing,Nike Air Max 270,Comfortable running shoes with Max Air cushioning,150.00,NIK-AM270-10,Nike,22,4.6,In Stock
+clothing,Patagonia Better Sweater,Recycled polyester fleece jacket,99.00,PAT-BS-M-BLK,Patagonia,15,4.7,In Stock
+clothing,Adidas Ultraboost 22,High-performance running shoes with Boost technology,180.00,ADI-UB22-9.5,Adidas,28,4.8,In Stock
+home-garden,Dyson V15 Detect,Cordless vacuum with laser dust detection,749.00,DYS-V15D-ABS,Dyson,6,4.7,In Stock
+home-garden,KitchenAid Stand Mixer,5-quart tilt-head stand mixer for baking,379.99,KAD-K45SS-WHT,KitchenAid,14,4.9,In Stock
+home-garden,Weber Genesis II E-335,3-burner gas grill with GS4 grilling system,899.00,WEB-GEN2-E335,Weber,3,4.6,In Stock
+home-garden,Nest Learning Thermostat,Smart thermostat that learns your schedule,249.00,GOO-NEST-T3007,Google,20,4.5,In Stock
+books,The Psychology of Money,Personal finance book by Morgan Housel,16.99,BK-POM-2020,Harriman House,150,4.8,In Stock
+books,Atomic Habits,Self-improvement book by James Clear,18.00,BK-AH-2018,Avery,89,4.7,In Stock
+books,Educated,Memoir by Tara Westover,16.99,BK-EDU-2018,Random House,67,4.6,In Stock
+sports,Peloton Bike+,Interactive exercise bike with rotating screen,2495.00,PEL-BIKE-PLUS,Peloton,2,4.4,In Stock
+sports,Yeti Rambler 20oz,Insulated stainless steel tumbler,35.00,YET-RAM-20-BLK,Yeti,78,4.8,In Stock
+sports,REI Co-op Dome 2 Tent,2-person backpacking tent with easy setup,179.00,REI-DOME2-GRN,REI Co-op,12,4.5,In Stock
+health-beauty,Olaplex Hair Perfector No. 3,At-home hair treatment for damaged hair,28.00,OLA-HP3-100ML,Olaplex,95,4.6,In Stock
+health-beauty,CeraVe Moisturizing Cream,Daily face and body moisturizer for dry skin,19.99,CER-MC-16OZ,CeraVe,120,4.7,In Stock
+automotive,Michelin Pilot Sport 4S,High-performance summer tire,289.99,MIC-PS4S-245-40R18,Michelin,16,4.8,In Stock
+automotive,Chemical Guys Car Wash Kit,Complete car detailing kit with soap and tools,79.99,CHG-CWK-BASIC,Chemical Guys,24,4.5,In Stock
+toys-games,LEGO Creator Expert Taj Mahal,5923-piece architectural building set,369.99,LEG-10256-TAJ,LEGO,8,4.9,In Stock
+toys-games,Nintendo Switch OLED,Gaming console with 7-inch OLED screen,349.99,NIN-SW-OLED-WHT,Nintendo,15,4.7,In Stock

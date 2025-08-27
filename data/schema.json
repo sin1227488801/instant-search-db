@@ -1,0 +1,118 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Data Validation Schema",
+  "description": "Schema for validating CSV data in the generic database system",
+  "type": "object",
+  "properties": {
+    "validation_rules": {
+      "type": "object",
+      "properties": {
+        "required_columns": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "List of required CSV columns"
+        },
+        "field_types": {
+          "type": "object",
+          "patternProperties": {
+            "^[a-zA-Z_][a-zA-Z0-9_]*$": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "enum": ["string", "integer", "float", "boolean", "date", "email", "url", "text"]
+                },
+                "required": {
+                  "type": "boolean"
+                },
+                "min_length": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "max_length": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "pattern": {
+                  "type": "string",
+                  "description": "Regular expression pattern for validation"
+                },
+                "allowed_values": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "description": "List of allowed values for this field"
+                },
+                "min_value": {
+                  "type": "number",
+                  "description": "Minimum numeric value"
+                },
+                "max_value": {
+                  "type": "number",
+                  "description": "Maximum numeric value"
+                },
+                "description": {
+                  "type": "string"
+                }
+              },
+              "required": ["type"],
+              "additionalProperties": false
+            }
+          },
+          "description": "Field type definitions and validation rules"
+        },
+        "data_quality": {
+          "type": "object",
+          "properties": {
+            "allow_empty_values": {
+              "type": "boolean",
+              "default": false
+            },
+            "trim_whitespace": {
+              "type": "boolean",
+              "default": true
+            },
+            "normalize_case": {
+              "type": "string",
+              "enum": ["none", "lower", "upper", "title"],
+              "default": "none"
+            },
+            "duplicate_handling": {
+              "type": "string",
+              "enum": ["allow", "warn", "error"],
+              "default": "warn"
+            }
+          }
+        },
+        "custom_validators": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "field": {
+                "type": "string"
+              },
+              "rule": {
+                "type": "string"
+              },
+              "message": {
+                "type": "string"
+              }
+            },
+            "required": ["name", "field", "rule", "message"]
+          }
+        }
+      },
+      "required": ["required_columns", "field_types"],
+      "additionalProperties": false
+    }
+  },
+  "required": ["validation_rules"],
+  "additionalProperties": false
+}

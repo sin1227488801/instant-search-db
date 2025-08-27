@@ -1,0 +1,620 @@
+/* リセット & ベース */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Noto Sans JP', sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* ヘッダー */
+.header {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+    padding: 2rem 0;
+    text-align: center;
+}
+
+.header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.logo i {
+    font-size: 2.5rem;
+    color: #667eea;
+}
+
+.logo h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.subtitle {
+    font-size: 1.1rem;
+    color: #666;
+    font-weight: 400;
+}
+
+/* メインコンテンツ */
+.main-content {
+    padding: 3rem 0;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* 検索セクション */
+.search-section {
+    margin-bottom: 3rem;
+}
+
+.search-container {
+    position: relative;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.search-box {
+    position: relative;
+    margin-bottom: 1rem;
+}
+
+.search-icon {
+    position: absolute;
+    left: 1.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #999;
+    font-size: 1.2rem;
+    z-index: 2;
+}
+
+#search-input {
+    width: 100%;
+    padding: 1.2rem 1.5rem 1.2rem 3.5rem;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 50px;
+    background: white;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+#search-input:focus {
+    box-shadow: 0 15px 40px rgba(102, 126, 234, 0.3);
+    transform: translateY(-2px);
+}
+
+.search-suggestions {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    margin-top: 0.5rem;
+    display: none; /* 初期状態は非表示 */
+    z-index: 10;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+}
+
+.search-suggestions.show {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.suggestion-item {
+    padding: 0.8rem 1rem;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.suggestion-item:hover {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    transform: translateX(5px);
+}
+
+.search-stats {
+    text-align: center;
+    color: white;
+    font-weight: 500;
+    font-size: 1rem;
+    min-height: 1.5rem;
+}
+
+/* ジャンル別ナビゲーション */
+.category-navigation {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 2rem;
+    margin-bottom: 3rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.navigation-content h3 {
+    color: #333;
+    margin-bottom: 1.5rem;
+    font-size: 1.3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.navigation-content h3 i {
+    color: #667eea;
+}
+
+.category-buttons {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.category-btn {
+    padding: 1.5rem;
+    border: 2px solid transparent;
+    border-radius: 15px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1rem;
+    position: relative;
+    overflow: hidden;
+}
+
+/* カテゴリ別の色分け - ブランドカラーベース */
+.category-btn[data-category="weapon"] {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+}
+
+.category-btn[data-category="shield"] {
+    background: linear-gradient(135deg, #5a67d8, #667eea);
+}
+
+.category-btn[data-category="pot"] {
+    background: linear-gradient(135deg, #764ba2, #9f7aea);
+}
+
+.category-btn[data-category="herb"] {
+    background: linear-gradient(135deg, #48bb78, #38a169);
+}
+
+.category-btn[data-category="staff"] {
+    background: linear-gradient(135deg, #ed8936, #dd6b20);
+}
+
+.category-btn[data-category="scroll"] {
+    background: linear-gradient(135deg, #38b2ac, #319795);
+}
+
+.category-btn[data-category="bracelet"] {
+    background: linear-gradient(135deg, #d53f8c, #b83280);
+}
+
+.category-btn[data-category="arrow"] {
+    background: linear-gradient(135deg, #4299e1, #3182ce);
+}
+
+.category-btn[data-category="onigiri"] {
+    background: linear-gradient(135deg, #f6ad55, #ed8936);
+}
+
+.category-btn[data-category="other"] {
+    background: linear-gradient(135deg, #a0aec0, #718096);
+}
+
+.category-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.category-btn:hover::before {
+    opacity: 1;
+}
+
+.category-btn:hover {
+    transform: translateY(-5px);
+    border-color: rgba(255, 255, 255, 0.3);
+    filter: brightness(1.1);
+}
+
+.category-btn[data-category="weapon"]:hover {
+    box-shadow: 0 15px 35px rgba(102, 126, 234, 0.4);
+}
+
+.category-btn[data-category="shield"]:hover {
+    box-shadow: 0 15px 35px rgba(90, 103, 216, 0.4);
+}
+
+.category-btn[data-category="pot"]:hover {
+    box-shadow: 0 15px 35px rgba(118, 75, 162, 0.4);
+}
+
+.category-btn[data-category="herb"]:hover {
+    box-shadow: 0 15px 35px rgba(72, 187, 120, 0.4);
+}
+
+.category-btn[data-category="staff"]:hover {
+    box-shadow: 0 15px 35px rgba(237, 137, 54, 0.4);
+}
+
+.category-btn[data-category="scroll"]:hover {
+    box-shadow: 0 15px 35px rgba(56, 178, 172, 0.4);
+}
+
+.category-btn[data-category="bracelet"]:hover {
+    box-shadow: 0 15px 35px rgba(213, 63, 140, 0.4);
+}
+
+.category-btn[data-category="arrow"]:hover {
+    box-shadow: 0 15px 35px rgba(66, 153, 225, 0.4);
+}
+
+.category-btn[data-category="onigiri"]:hover {
+    box-shadow: 0 15px 35px rgba(246, 173, 85, 0.4);
+}
+
+.category-btn[data-category="other"]:hover {
+    box-shadow: 0 15px 35px rgba(160, 174, 192, 0.4);
+}
+
+.category-btn.active {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+    border-color: rgba(255, 255, 255, 0.8);
+    filter: brightness(1.2) saturate(1.3);
+}
+
+.category-btn.active[data-category="weapon"] {
+    box-shadow: 0 15px 35px rgba(102, 126, 234, 0.6);
+}
+
+.category-btn.active[data-category="shield"] {
+    box-shadow: 0 15px 35px rgba(90, 103, 216, 0.6);
+}
+
+.category-btn.active[data-category="pot"] {
+    box-shadow: 0 15px 35px rgba(118, 75, 162, 0.6);
+}
+
+.category-btn.active[data-category="herb"] {
+    box-shadow: 0 15px 35px rgba(72, 187, 120, 0.6);
+}
+
+.category-btn.active[data-category="staff"] {
+    box-shadow: 0 15px 35px rgba(237, 137, 54, 0.6);
+}
+
+.category-btn.active[data-category="scroll"] {
+    box-shadow: 0 15px 35px rgba(56, 178, 172, 0.6);
+}
+
+.category-btn.active[data-category="bracelet"] {
+    box-shadow: 0 15px 35px rgba(213, 63, 140, 0.6);
+}
+
+.category-btn.active[data-category="arrow"] {
+    box-shadow: 0 15px 35px rgba(66, 153, 225, 0.6);
+}
+
+.category-btn.active[data-category="onigiri"] {
+    box-shadow: 0 15px 35px rgba(246, 173, 85, 0.6);
+}
+
+.category-btn.active[data-category="other"] {
+    box-shadow: 0 15px 35px rgba(160, 174, 192, 0.6);
+}
+
+.category-icon {
+    position: relative;
+    margin-bottom: 0.5rem;
+}
+
+.category-btn i {
+    font-size: 2.5rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    filter: drop-shadow(0 1px 2px rgba(255, 255, 255, 0.2));
+    display: block;
+}
+
+.emoji-fallback {
+    font-size: 2.5rem;
+    display: none;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Font Awesomeが読み込まれない場合の絵文字フォールバック */
+@supports not (font-family: "Font Awesome 6 Free") {
+    .category-btn i {
+        display: none;
+    }
+    .emoji-fallback {
+        display: block;
+    }
+}
+
+.category-name {
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.category-count {
+    font-size: 0.85rem;
+    opacity: 0.8;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 0.2rem 0.8rem;
+    border-radius: 10px;
+    margin-top: 0.2rem;
+}
+
+.navigation-text {
+    color: #666;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.navigation-text i {
+    color: #667eea;
+}
+
+/* 検索結果 */
+.results-section {
+    min-height: 200px;
+}
+
+.results-grid {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+}
+
+.result-card {
+    background: white;
+    border-radius: 15px;
+    padding: 1.5rem;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    animation: slideUp 0.5s ease forwards;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+@keyframes slideUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.result-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+.item-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #f0f0f0;
+}
+
+.item-icon {
+    font-size: 2rem;
+    width: 3rem;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    border-radius: 50%;
+    color: white;
+}
+
+.item-name {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #333;
+    flex: 1;
+}
+
+.item-description {
+    color: #666;
+    line-height: 1.7;
+    font-size: 0.95rem;
+}
+
+/* ハイライト */
+mark {
+    background: linear-gradient(135deg, #ffd700, #ffed4e);
+    color: #333;
+    padding: 0.2rem 0.4rem;
+    border-radius: 5px;
+    font-weight: 600;
+}
+
+/* エラー・空結果 */
+.no-results, .error-message {
+    text-align: center;
+    padding: 3rem 2rem;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.no-results i, .error-message i {
+    font-size: 3rem;
+    color: #ccc;
+    margin-bottom: 1rem;
+}
+
+.no-results h3 {
+    color: #333;
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+}
+
+.no-results p, .error-message p {
+    color: #666;
+    margin-bottom: 1.5rem;
+}
+
+.suggestion-keywords {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.keyword-tag {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.keyword-tag:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+/* フッター */
+.footer {
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    text-align: center;
+    padding: 2rem 0;
+    margin-top: 4rem;
+}
+
+.footer-content p {
+    margin-bottom: 0.5rem;
+}
+
+.footer-note {
+    color: #ccc;
+    font-size: 0.9rem;
+}
+
+/* レスポンシブ */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 1rem;
+    }
+    
+    .logo h1 {
+        font-size: 2rem;
+    }
+    
+    .category-buttons {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .results-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .result-card {
+        padding: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .category-buttons {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.8rem;
+    }
+    
+    .category-btn {
+        padding: 1rem;
+    }
+    
+    .category-btn i,
+    .emoji-fallback {
+        font-size: 1.5rem;
+    }
+    
+    .category-name {
+        font-size: 0.9rem;
+    }
+    
+    .category-count {
+        font-size: 0.75rem;
+    }
+    
+    .logo {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .logo h1 {
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 360px) {
+    .category-buttons {
+        grid-template-columns: 1fr;
+    }
+}

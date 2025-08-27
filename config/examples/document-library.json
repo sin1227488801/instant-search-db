@@ -1,0 +1,194 @@
+{
+  "categories": {
+    "policies": {
+      "display_name": "Policies",
+      "icon": "fas fa-gavel",
+      "emoji_fallback": "📋",
+      "color": "#e74c3c",
+      "description": "Company policies and procedures"
+    },
+    "manuals": {
+      "display_name": "Manuals",
+      "icon": "fas fa-book-open",
+      "emoji_fallback": "📖",
+      "color": "#3498db",
+      "description": "User manuals and technical documentation"
+    },
+    "reports": {
+      "display_name": "Reports",
+      "icon": "fas fa-chart-bar",
+      "emoji_fallback": "📊",
+      "color": "#27ae60",
+      "description": "Business reports and analytics"
+    },
+    "presentations": {
+      "display_name": "Presentations",
+      "icon": "fas fa-presentation",
+      "emoji_fallback": "📽️",
+      "color": "#f39c12",
+      "description": "Slide decks and presentation materials"
+    },
+    "contracts": {
+      "display_name": "Contracts",
+      "icon": "fas fa-file-contract",
+      "emoji_fallback": "📄",
+      "color": "#9b59b6",
+      "description": "Legal contracts and agreements"
+    },
+    "templates": {
+      "display_name": "Templates",
+      "icon": "fas fa-copy",
+      "emoji_fallback": "📝",
+      "color": "#16a085",
+      "description": "Document templates and forms"
+    },
+    "training": {
+      "display_name": "Training",
+      "icon": "fas fa-graduation-cap",
+      "emoji_fallback": "🎓",
+      "color": "#e67e22",
+      "description": "Training materials and educational content"
+    },
+    "archived": {
+      "display_name": "Archived",
+      "icon": "fas fa-archive",
+      "emoji_fallback": "🗃️",
+      "color": "#95a5a6",
+      "description": "Archived and historical documents"
+    }
+  },
+  "field_mappings": {
+    "category": "document_type",
+    "name": "title",
+    "description": "description",
+    "author": "author",
+    "created_date": "created_date",
+    "modified_date": "modified_date",
+    "file_type": "file_format",
+    "file_size": "file_size_mb",
+    "version": "version",
+    "status": "status",
+    "tags": "tags",
+    "department": "department"
+  },
+  "display_fields": ["name", "author", "created_date", "file_type", "description"],
+  "search_fields": ["name", "author", "description", "tags", "department"],
+  "required_fields": ["category", "name", "author", "created_date"],
+  "field_definitions": {
+    "category": {
+      "display_name": "Document Type",
+      "type": "string",
+      "searchable": true,
+      "required": true,
+      "description": "Type of document"
+    },
+    "name": {
+      "display_name": "Title",
+      "type": "string",
+      "searchable": true,
+      "required": true,
+      "description": "Document title"
+    },
+    "description": {
+      "display_name": "Description",
+      "type": "text",
+      "searchable": true,
+      "required": false,
+      "description": "Brief description of the document content"
+    },
+    "author": {
+      "display_name": "Author",
+      "type": "string",
+      "searchable": true,
+      "required": true,
+      "description": "Document author or creator"
+    },
+    "created_date": {
+      "display_name": "Created Date",
+      "type": "date",
+      "searchable": false,
+      "required": true,
+      "description": "Date when document was created"
+    },
+    "modified_date": {
+      "display_name": "Modified Date",
+      "type": "date",
+      "searchable": false,
+      "required": false,
+      "description": "Date when document was last modified"
+    },
+    "file_type": {
+      "display_name": "File Type",
+      "type": "string",
+      "searchable": true,
+      "required": false,
+      "description": "File format (PDF, DOCX, PPTX, etc.)"
+    },
+    "file_size": {
+      "display_name": "File Size (MB)",
+      "type": "number",
+      "searchable": false,
+      "required": false,
+      "description": "File size in megabytes"
+    },
+    "version": {
+      "display_name": "Version",
+      "type": "string",
+      "searchable": false,
+      "required": false,
+      "description": "Document version number"
+    },
+    "status": {
+      "display_name": "Status",
+      "type": "string",
+      "searchable": true,
+      "required": false,
+      "description": "Document status (Draft, Published, Archived)"
+    },
+    "tags": {
+      "display_name": "Tags",
+      "type": "string",
+      "searchable": true,
+      "required": false,
+      "description": "Comma-separated tags for categorization"
+    },
+    "department": {
+      "display_name": "Department",
+      "type": "string",
+      "searchable": true,
+      "required": false,
+      "description": "Department that owns the document"
+    }
+  },
+  "ui": {
+    "title": "Document Library Search",
+    "subtitle": "Find documents and resources quickly",
+    "theme": {
+      "primary_color": "#34495e",
+      "secondary_color": "#3498db",
+      "accent_color": "#e74c3c",
+      "background_color": "#ecf0f1",
+      "text_color": "#2c3e50",
+      "border_color": "#bdc3c7"
+    },
+    "layout": {
+      "categories_per_row": 4,
+      "show_category_counts": true,
+      "enable_suggestions": true,
+      "show_search_stats": true,
+      "compact_mode": false
+    },
+    "search": {
+      "placeholder_text": "Search documents by title, author, or content...",
+      "min_search_length": 2,
+      "search_delay_ms": 300,
+      "max_results": 100
+    },
+    "categories": {
+      "show_icons": true,
+      "show_emoji_fallback": true,
+      "show_counts": true,
+      "button_style": "rounded"
+    }
+  }
+}

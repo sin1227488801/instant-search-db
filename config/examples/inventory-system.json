@@ -1,0 +1,202 @@
+{
+  "categories": {
+    "raw-materials": {
+      "display_name": "Raw Materials",
+      "icon": "fas fa-cubes",
+      "emoji_fallback": "🧱",
+      "color": "#8e44ad",
+      "description": "Raw materials and components"
+    },
+    "finished-goods": {
+      "display_name": "Finished Goods",
+      "icon": "fas fa-box",
+      "emoji_fallback": "📦",
+      "color": "#27ae60",
+      "description": "Completed products ready for sale"
+    },
+    "work-in-progress": {
+      "display_name": "Work in Progress",
+      "icon": "fas fa-cogs",
+      "emoji_fallback": "⚙️",
+      "color": "#f39c12",
+      "description": "Items currently in production"
+    },
+    "tools-equipment": {
+      "display_name": "Tools & Equipment",
+      "icon": "fas fa-tools",
+      "emoji_fallback": "🔧",
+      "color": "#e74c3c",
+      "description": "Manufacturing tools and equipment"
+    },
+    "office-supplies": {
+      "display_name": "Office Supplies",
+      "icon": "fas fa-paperclip",
+      "emoji_fallback": "📎",
+      "color": "#3498db",
+      "description": "Office and administrative supplies"
+    },
+    "safety-equipment": {
+      "display_name": "Safety Equipment",
+      "icon": "fas fa-hard-hat",
+      "emoji_fallback": "⛑️",
+      "color": "#e67e22",
+      "description": "Personal protective equipment and safety gear"
+    },
+    "maintenance": {
+      "display_name": "Maintenance",
+      "icon": "fas fa-wrench",
+      "emoji_fallback": "🔩",
+      "color": "#16a085",
+      "description": "Maintenance and repair supplies"
+    },
+    "consumables": {
+      "display_name": "Consumables",
+      "icon": "fas fa-tint",
+      "emoji_fallback": "💧",
+      "color": "#9b59b6",
+      "description": "Consumable materials and supplies"
+    }
+  },
+  "field_mappings": {
+    "category": "item_type",
+    "name": "item_name",
+    "description": "description",
+    "quantity": "current_quantity",
+    "location": "storage_location",
+    "status": "status",
+    "unit_cost": "unit_cost",
+    "total_value": "total_value",
+    "supplier": "supplier",
+    "reorder_level": "reorder_level",
+    "max_stock": "max_stock_level",
+    "last_updated": "last_inventory_date",
+    "barcode": "barcode_sku"
+  },
+  "display_fields": ["name", "quantity", "location", "status", "unit_cost", "supplier"],
+  "search_fields": ["name", "description", "location", "supplier", "barcode"],
+  "required_fields": ["category", "name", "quantity", "location"],
+  "field_definitions": {
+    "category": {
+      "display_name": "Item Type",
+      "type": "string",
+      "searchable": true,
+      "required": true,
+      "description": "Type of inventory item"
+    },
+    "name": {
+      "display_name": "Item Name",
+      "type": "string",
+      "searchable": true,
+      "required": true,
+      "description": "Name of the inventory item"
+    },
+    "description": {
+      "display_name": "Description",
+      "type": "text",
+      "searchable": true,
+      "required": false,
+      "description": "Detailed description of the item"
+    },
+    "quantity": {
+      "display_name": "Current Quantity",
+      "type": "number",
+      "searchable": false,
+      "required": true,
+      "description": "Current stock quantity"
+    },
+    "location": {
+      "display_name": "Storage Location",
+      "type": "string",
+      "searchable": true,
+      "required": true,
+      "description": "Physical storage location"
+    },
+    "status": {
+      "display_name": "Status",
+      "type": "string",
+      "searchable": true,
+      "required": false,
+      "description": "Item status (Available, Reserved, Out of Stock)"
+    },
+    "unit_cost": {
+      "display_name": "Unit Cost",
+      "type": "currency",
+      "searchable": false,
+      "required": false,
+      "description": "Cost per unit"
+    },
+    "total_value": {
+      "display_name": "Total Value",
+      "type": "currency",
+      "searchable": false,
+      "required": false,
+      "description": "Total inventory value"
+    },
+    "supplier": {
+      "display_name": "Supplier",
+      "type": "string",
+      "searchable": true,
+      "required": false,
+      "description": "Primary supplier or vendor"
+    },
+    "reorder_level": {
+      "display_name": "Reorder Level",
+      "type": "number",
+      "searchable": false,
+      "required": false,
+      "description": "Minimum quantity before reordering"
+    },
+    "max_stock": {
+      "display_name": "Max Stock Level",
+      "type": "number",
+      "searchable": false,
+      "required": false,
+      "description": "Maximum stock level"
+    },
+    "last_updated": {
+      "display_name": "Last Inventory Date",
+      "type": "date",
+      "searchable": false,
+      "required": false,
+      "description": "Date of last inventory count"
+    },
+    "barcode": {
+      "display_name": "Barcode/SKU",
+      "type": "string",
+      "searchable": true,
+      "required": false,
+      "description": "Barcode or SKU identifier"
+    }
+  },
+  "ui": {
+    "title": "Inventory Management System",
+    "subtitle": "Track and manage inventory items",
+    "theme": {
+      "primary_color": "#2c3e50",
+      "secondary_color": "#27ae60",
+      "accent_color": "#e74c3c",
+      "background_color": "#ecf0f1",
+      "text_color": "#2c3e50",
+      "border_color": "#bdc3c7"
+    },
+    "layout": {
+      "categories_per_row": 4,
+      "show_category_counts": true,
+      "enable_suggestions": true,
+      "show_search_stats": true,
+      "compact_mode": false
+    },
+    "search": {
+      "placeholder_text": "Search inventory by name, location, or barcode...",
+      "min_search_length": 2,
+      "search_delay_ms": 300,
+      "max_results": 100
+    },
+    "categories": {
+      "show_icons": true,
+      "show_emoji_fallback": true,
+      "show_counts": true,
+      "button_style": "rounded"
+    }
+  }
+}

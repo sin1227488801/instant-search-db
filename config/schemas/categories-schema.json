@@ -1,0 +1,47 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Categories Configuration Schema",
+  "type": "object",
+  "properties": {
+    "categories": {
+      "type": "object",
+      "patternProperties": {
+        "^[a-zA-Z0-9_-]+$": {
+          "type": "object",
+          "properties": {
+            "display_name": {
+              "type": "string",
+              "minLength": 1,
+              "description": "Human-readable name for the category"
+            },
+            "icon": {
+              "type": "string",
+              "pattern": "^fas fa-[a-z0-9-]+$",
+              "description": "FontAwesome icon class"
+            },
+            "emoji_fallback": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 4,
+              "description": "Emoji to use if icon is not available"
+            },
+            "color": {
+              "type": "string",
+              "pattern": "^#[0-9a-fA-F]{6}$",
+              "description": "Hex color code for the category"
+            },
+            "description": {
+              "type": "string",
+              "description": "Description of the category"
+            }
+          },
+          "required": ["display_name", "icon", "emoji_fallback", "color"],
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "required": ["categories"],
+  "additionalProperties": false
+}

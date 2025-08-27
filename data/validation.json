@@ -1,0 +1,42 @@
+{
+  "validation_rules": {
+    "required_columns": ["category", "name"],
+    "field_types": {
+      "category": {
+        "type": "string",
+        "required": true,
+        "min_length": 1,
+        "max_length": 50,
+        "allowed_values": ["武器", "盾", "その他"],
+        "description": "Item category classification"
+      },
+      "name": {
+        "type": "string",
+        "required": true,
+        "min_length": 1,
+        "max_length": 200,
+        "description": "Item name"
+      },
+      "description": {
+        "type": "text",
+        "required": false,
+        "max_length": 2000,
+        "description": "Item description"
+      }
+    },
+    "data_quality": {
+      "allow_empty_values": false,
+      "trim_whitespace": true,
+      "normalize_case": "none",
+      "duplicate_handling": "warn"
+    },
+    "custom_validators": [
+      {
+        "name": "category_consistency",
+        "field": "category",
+        "rule": "must_exist_in_categories_config",
+        "message": "Category must be defined in categories configuration"
+      }
+    ]
+  }
+}

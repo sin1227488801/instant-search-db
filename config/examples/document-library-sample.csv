@@ -1,0 +1,25 @@
+document_type,title,description,author,created_date,modified_date,file_format,file_size_mb,version,status,tags,department
+policies,Employee Handbook 2024,Comprehensive guide to company policies and procedures,HR Department,2024-01-15,2024-03-10,PDF,2.5,3.1,Published,"hr,policies,employee-guide",Human Resources
+policies,Remote Work Policy,Guidelines for remote work arrangements and expectations,Sarah Johnson,2023-11-20,2024-02-05,DOCX,0.8,2.0,Published,"remote-work,policy,flexible-work",Human Resources
+policies,Data Security Policy,Information security guidelines and data protection procedures,IT Security Team,2024-02-01,2024-02-15,PDF,1.2,1.2,Published,"security,data-protection,compliance",Information Technology
+manuals,Software Installation Guide,Step-by-step guide for installing company software,Mike Chen,2024-01-10,2024-03-05,PDF,3.2,2.5,Published,"software,installation,it-support",Information Technology
+manuals,New Employee Onboarding Manual,Complete onboarding process for new hires,Jennifer Smith,2023-12-15,2024-01-20,DOCX,1.8,1.8,Published,"onboarding,new-hire,training",Human Resources
+manuals,Equipment Usage Manual,Guidelines for using office equipment and machinery,Facilities Team,2024-01-05,2024-01-05,PDF,4.1,1.0,Published,"equipment,facilities,safety",Facilities
+reports,Q4 2023 Financial Report,Quarterly financial performance and analysis,Finance Team,2024-01-31,2024-01-31,XLSX,5.2,1.0,Published,"finance,quarterly,performance",Finance
+reports,Employee Satisfaction Survey Results,Analysis of annual employee satisfaction survey,Lisa Wong,2024-02-20,2024-02-25,PDF,2.1,1.1,Published,"survey,employee-satisfaction,hr-analytics",Human Resources
+reports,IT Infrastructure Assessment,Comprehensive review of current IT infrastructure,David Rodriguez,2024-03-01,2024-03-15,DOCX,6.8,1.3,Published,"infrastructure,assessment,technology",Information Technology
+presentations,Company All-Hands Q1 2024,Quarterly company meeting presentation,CEO Office,2024-03-20,2024-03-20,PPTX,15.3,1.0,Published,"all-hands,quarterly,company-update",Executive
+presentations,Product Roadmap 2024,Annual product development roadmap presentation,Product Team,2024-01-25,2024-02-10,PPTX,8.7,1.5,Published,"product,roadmap,strategy",Product Management
+presentations,Sales Training Workshop,Training materials for new sales techniques,Sales Team,2024-02-15,2024-02-28,PPTX,12.4,2.0,Published,"sales,training,workshop",Sales
+contracts,Vendor Agreement Template,Standard template for vendor service agreements,Legal Team,2023-10-15,2024-01-10,DOCX,1.1,3.2,Published,"contract,vendor,template",Legal
+contracts,NDA Template,Non-disclosure agreement template for partners,Legal Team,2023-09-20,2023-12-05,DOCX,0.6,2.1,Published,"nda,confidentiality,legal",Legal
+contracts,Employment Contract Template,Standard employment contract template,HR Department,2024-01-08,2024-01-08,DOCX,1.4,1.0,Published,"employment,contract,hr",Human Resources
+templates,Meeting Minutes Template,Standard template for recording meeting minutes,Operations Team,2023-11-10,2024-01-15,DOCX,0.3,1.5,Published,"meeting,minutes,template",Operations
+templates,Project Proposal Template,Template for creating project proposals,Project Management,2024-01-20,2024-01-20,DOCX,0.9,1.0,Published,"project,proposal,template",Project Management
+templates,Expense Report Form,Template for employee expense reporting,Finance Team,2023-12-01,2024-02-01,XLSX,0.4,2.0,Published,"expense,report,finance",Finance
+training,Cybersecurity Awareness Training,Interactive training module on cybersecurity best practices,IT Security Team,2024-02-10,2024-03-01,PDF,8.9,1.2,Published,"cybersecurity,training,awareness",Information Technology
+training,Leadership Development Program,Comprehensive leadership training materials,HR Development,2024-01-30,2024-02-20,PDF,12.1,1.1,Published,"leadership,development,management",Human Resources
+training,Customer Service Excellence,Training materials for customer service best practices,Customer Success,2024-02-05,2024-02-15,PPTX,6.3,1.0,Published,"customer-service,training,excellence",Customer Success
+archived,2022 Annual Report,Company annual report for fiscal year 2022,Finance Team,2023-03-15,2023-03-15,PDF,18.7,1.0,Archived,"annual-report,2022,historical",Finance
+archived,Old IT Policies (Pre-2023),Historical IT policies before 2023 update,IT Department,2022-12-31,2022-12-31,PDF,3.4,Final,Archived,"historical,it-policy,deprecated",Information Technology
+archived,Legacy Product Documentation,Documentation for discontinued product line,Product Team,2023-06-30,2023-06-30,DOCX,7.2,Final,Archived,"legacy,product,discontinued",Product Management

@@ -1,0 +1,101 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Fields Configuration Schema",
+  "type": "object",
+  "properties": {
+    "field_mappings": {
+      "type": "object",
+      "properties": {
+        "category": {
+          "type": "string",
+          "minLength": 1,
+          "description": "CSV column name for category field"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "description": "CSV column name for name field"
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1,
+          "description": "CSV column name for description field"
+        }
+      },
+      "required": ["category", "name"],
+      "patternProperties": {
+        "^[a-zA-Z0-9_]+$": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": true
+    },
+    "display_fields": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 1,
+      "uniqueItems": true,
+      "description": "Fields to display in search results"
+    },
+    "search_fields": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 1,
+      "uniqueItems": true,
+      "description": "Fields to include in search"
+    },
+    "required_fields": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true,
+      "description": "Fields that must be present in data"
+    },
+    "field_definitions": {
+      "type": "object",
+      "patternProperties": {
+        "^[a-zA-Z0-9_]+$": {
+          "type": "object",
+          "properties": {
+            "display_name": {
+              "type": "string",
+              "minLength": 1,
+              "description": "Human-readable field name"
+            },
+            "type": {
+              "type": "string",
+              "enum": ["string", "text", "number", "date", "boolean"],
+              "description": "Data type of the field"
+            },
+            "searchable": {
+              "type": "boolean",
+              "description": "Whether field can be searched"
+            },
+            "required": {
+              "type": "boolean",
+              "description": "Whether field is required"
+            },
+            "description": {
+              "type": "string",
+              "description": "Description of the field"
+            }
+          },
+          "required": ["display_name", "type"],
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "required": ["field_mappings", "display_fields", "search_fields"],
+  "additionalProperties": false
+}
