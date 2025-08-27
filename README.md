@@ -6,14 +6,28 @@
 [![Flask](https://img.shields.io/badge/Flask-2.0+-green.svg)](https://flask.palletsprojects.com/)
 [![Docker](https://img.shields.io/badge/Docker-Ready-blue.svg)](https://docker.com)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![GitHub Pages](https://img.shields.io/badge/Demo-GitHub%20Pages-brightgreen.svg)](https://sin1227488801.github.io/instant-search-db/)
+[![CI/CD](https://github.com/sin1227488801/instant-search-db/workflows/CI%2FCD/badge.svg)](https://github.com/sin1227488801/instant-search-db/actions)
 
 > **🚀 v2.0の新機能**: 設定ファイルによる完全カスタマイズ対応！ゲーム、商品カタログ、ドキュメント管理など、あらゆる用途に対応可能な汎用システムに進化しました。
 
 ## 📸 デモ
 
-![Demo GIF](https://via.placeholder.com/800x400/2c3e50/ffffff?text=instant-search-db+Demo)
+🌐 **[ライブデモサイト](https://sin1227488801.github.io/instant-search-db/)** - GitHub Pagesで公開中
+
+![Demo Screenshot](https://via.placeholder.com/800x400/2c3e50/ffffff?text=instant-search-db+Demo+Screenshot)
 
 *リアルタイム検索とカテゴリフィルタリングのデモ*
+
+### 🎮 実際に試してみる
+
+```bash
+# クローンして即座に起動
+git clone https://github.com/sin1227488801/instant-search-db.git
+cd instant-search-db
+docker-compose up --build
+# → http://localhost:5000 でアクセス
+```
 
 ## 🌟 システム概要
 
@@ -293,6 +307,19 @@ python run_app.py
 | **設定管理** | JSON + JSONSchema | 構造化設定とバリデーション |
 | **コンテナ** | Docker + Docker Compose | 簡単デプロイメント |
 | **監視** | カスタムログシステム | パフォーマンス監視 |
+| **CI/CD** | GitHub Actions | 自動テスト・デプロイ |
+
+### 🎯 ポートフォリオハイライト
+
+このプロジェクトで実装・習得した技術：
+
+- **🏗️ アーキテクチャ設計**: 設定駆動型の汎用システム設計
+- **🔍 全文検索**: SQLite FTS5を活用した高性能検索実装
+- **🎨 UI/UX**: レスポンシブデザインとリアルタイム検索体験
+- **🐳 DevOps**: Docker化とGitHub Actionsによる自動化
+- **📊 データ管理**: CSV/JSON/SQLiteを活用したデータパイプライン
+- **🌐 国際化**: 多言語対応システムの実装
+- **🧪 テスト**: 包括的なテストスイートの構築
 
 ## 🛠️ 開発者向け情報
 
