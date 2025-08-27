@@ -1,8 +1,19 @@
-# instant-search-db
+# 🔍 instant-search-db
 
-汎用リアルタイム検索データベースシステム v2.0
+**汎用リアルタイム検索データベースシステム v2.0**
 
-> **v2.0の新機能**: 設定ファイルによる完全カスタマイズ対応！ゲーム、商品カタログ、ドキュメント管理など、あらゆる用途に対応可能な汎用システムに進化しました。
+[![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://python.org)
+[![Flask](https://img.shields.io/badge/Flask-2.0+-green.svg)](https://flask.palletsprojects.com/)
+[![Docker](https://img.shields.io/badge/Docker-Ready-blue.svg)](https://docker.com)
+[![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
+> **🚀 v2.0の新機能**: 設定ファイルによる完全カスタマイズ対応！ゲーム、商品カタログ、ドキュメント管理など、あらゆる用途に対応可能な汎用システムに進化しました。
+
+## 📸 デモ
+
+![Demo GIF](https://via.placeholder.com/800x400/2c3e50/ffffff?text=instant-search-db+Demo)
+
+*リアルタイム検索とカテゴリフィルタリングのデモ*
 
 ## 🌟 システム概要
 
