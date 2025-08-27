@@ -7,8 +7,14 @@ import csv
 import time
 import random
 import string
-import psutil
 import threading
+
+try:
+    import psutil
+    HAS_PSUTIL = True
+except ImportError:
+    HAS_PSUTIL = False
+    psutil = None
 from unittest.mock import patch, MagicMock
 from instant_search_db.config_manager import ConfigManager
 from instant_search_db.data_manager import DataManager

@@ -430,11 +430,7 @@ class TestConfigManager(unittest.TestCase):
         self.assertEqual(category.display_name, "日本語カテゴリ")
         self.assertEqual(category.description, "日本語の説明文")
 
-if __name__ == '__main__':
-    unittest.main()
-
-class 
-TestConfigManagerErrorHandling(unittest.TestCase):
+class TestConfigManagerErrorHandling(unittest.TestCase):
     """Test error handling scenarios in ConfigManager"""
     
     def setUp(self):
