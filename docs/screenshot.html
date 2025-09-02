@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,39 +13,39 @@
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
         }
-        
+
         .container {
             max-width: 1000px;
             margin: 0 auto;
             background: white;
             border-radius: 15px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
             overflow: hidden;
         }
-        
+
         .header {
             background: #2c3e50;
             color: white;
             padding: 2rem;
             text-align: center;
         }
-        
+
         .header h1 {
             margin: 0 0 0.5rem 0;
             font-size: 2.5rem;
         }
-        
+
         .header p {
             margin: 0;
             opacity: 0.8;
             font-size: 1.1rem;
         }
-        
+
         .search-section {
             padding: 2rem;
             border-bottom: 1px solid #eee;
         }
-        
+
         .search-box {
             width: 100%;
             padding: 1rem;
@@ -54,11 +55,11 @@
             outline: none;
             transition: all 0.3s ease;
         }
-        
+
         .search-box:focus {
             box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
         }
-        
+
         .categories {
             display: flex;
             gap: 1rem;
@@ -66,7 +67,7 @@
             flex-wrap: wrap;
             justify-content: center;
         }
-        
+
         .category {
             background: #3498db;
             color: white;
@@ -78,20 +79,20 @@
             align-items: center;
             gap: 0.5rem;
         }
-        
+
         .category:hover {
             background: #2980b9;
             transform: translateY(-2px);
         }
-        
+
         .category.active {
             background: #e74c3c;
         }
-        
+
         .results {
             padding: 2rem;
         }
-        
+
         .result-item {
             background: #f8f9fa;
             border: 1px solid #dee2e6;
@@ -100,19 +101,19 @@
             margin-bottom: 1rem;
             transition: all 0.3s ease;
         }
-        
+
         .result-item:hover {
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             transform: translateY(-2px);
         }
-        
+
         .result-title {
             font-size: 1.3rem;
             font-weight: bold;
             color: #2c3e50;
             margin-bottom: 0.5rem;
         }
-        
+
         .result-category {
             display: inline-block;
             background: #3498db;
@@ -122,12 +123,12 @@
             font-size: 0.9rem;
             margin-bottom: 0.5rem;
         }
-        
+
         .result-description {
             color: #666;
             line-height: 1.6;
         }
-        
+
         .stats {
             background: #ecf0f1;
             padding: 1rem 2rem;
@@ -136,16 +137,17 @@
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <div class="header">
             <h1>🔍 instant-search-db</h1>
             <p>汎用リアルタイム検索データベースシステム</p>
         </div>
-        
+
         <div class="search-section">
             <input type="text" class="search-box" placeholder="アイテム名、説明で検索..." value="つるはし">
-            
+
             <div class="categories">
                 <a href="#" class="category active">
                     ⚔️ 武器 (15)
@@ -164,30 +166,31 @@
                 </a>
             </div>
         </div>
-        
+
         <div class="results">
             <div class="result-item">
                 <div class="result-category">武器</div>
                 <div class="result-title">つるはし</div>
                 <div class="result-description">攻 1 買 240 補正 12 売 100<br>基本的な採掘用具。攻撃力は低いが、壁を掘ることができる。</div>
             </div>
-            
+
             <div class="result-item">
                 <div class="result-category">武器</div>
                 <div class="result-title">つるはし+1</div>
                 <div class="result-description">攻 2 買 480 補正 15 売 200<br>強化されたつるはし。攻撃力が向上し、より効率的に採掘できる。</div>
             </div>
-            
+
             <div class="result-item">
                 <div class="result-category">武器</div>
                 <div class="result-title">金のつるはし</div>
                 <div class="result-description">攻 3 買 1200 補正 20 売 600<br>金で作られた高級つるはし。攻撃力が高く、特殊な鉱石も採掘可能。</div>
             </div>
         </div>
-        
+
         <div class="stats">
             検索結果: 3件 | 検索時間: 0.02秒 | 総アイテム数: 64件
         </div>
     </div>
 </body>
+
 </html>

@@ -29,6 +29,8 @@ docker-compose up --build
 # → http://localhost:5000 でアクセス
 ```
 
+**Dockerが入っていない場合**: 📋 **[Docker セットアップガイド](https://sin1227488801.github.io/instant-search-db/docker-setup.html)** で簡単インストール
+
 ## 🌟 システム概要
 
 このシステムは、**設定ファイルだけでカスタマイズ可能**な汎用データベース検索システムです。コードを変更することなく、様々な用途に対応できます。
