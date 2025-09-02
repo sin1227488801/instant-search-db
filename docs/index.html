@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,7 +11,7 @@
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             line-height: 1.6;
@@ -18,31 +19,31 @@
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
         }
-        
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 2rem;
         }
-        
+
         .hero {
             text-align: center;
             color: white;
             margin-bottom: 3rem;
         }
-        
+
         .hero h1 {
             font-size: 3rem;
             margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
-        
+
         .hero p {
             font-size: 1.2rem;
             margin-bottom: 2rem;
             opacity: 0.9;
         }
-        
+
         .badges {
             display: flex;
             justify-content: center;
@@ -50,23 +51,23 @@
             flex-wrap: wrap;
             margin-bottom: 2rem;
         }
-        
+
         .badge {
-            background: rgba(255,255,255,0.2);
+            background: rgba(255, 255, 255, 0.2);
             padding: 0.3rem 0.8rem;
             border-radius: 20px;
             font-size: 0.9rem;
             backdrop-filter: blur(10px);
         }
-        
+
         .demo-section {
             background: white;
             border-radius: 15px;
             padding: 2rem;
             margin-bottom: 2rem;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         }
-        
+
         .demo-video {
             width: 100%;
             max-width: 800px;
@@ -79,37 +80,37 @@
             margin: 0 auto 2rem;
             border: 2px dashed #dee2e6;
         }
-        
+
         .features {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
             margin-bottom: 3rem;
         }
-        
+
         .feature {
             background: white;
             padding: 2rem;
             border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease;
         }
-        
+
         .feature:hover {
             transform: translateY(-5px);
         }
-        
+
         .feature h3 {
             color: #667eea;
             margin-bottom: 1rem;
             font-size: 1.3rem;
         }
-        
+
         .cta {
             text-align: center;
             margin-top: 3rem;
         }
-        
+
         .btn {
             display: inline-block;
             background: #667eea;
@@ -121,24 +122,24 @@
             transition: all 0.3s ease;
             margin: 0.5rem;
         }
-        
+
         .btn:hover {
             background: #5a67d8;
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
-        
+
         .btn-secondary {
             background: transparent;
             border: 2px solid white;
             color: white;
         }
-        
+
         .btn-secondary:hover {
             background: white;
             color: #667eea;
         }
-        
+
         .tech-stack {
             display: flex;
             justify-content: center;
@@ -146,132 +147,121 @@
             flex-wrap: wrap;
             margin: 2rem 0;
         }
-        
+
         .tech-item {
-            background: rgba(255,255,255,0.1);
+            background: rgba(255, 255, 255, 0.1);
             padding: 1rem;
             border-radius: 10px;
             text-align: center;
             color: white;
             backdrop-filter: blur(10px);
         }
-        
+
         @media (max-width: 768px) {
             .hero h1 {
                 font-size: 2rem;
             }
-            
+
             .container {
                 padding: 1rem;
             }
-            
+
             .tech-stack {
                 gap: 1rem;
             }
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <div class="hero">
             <h1>🔍 instant-search-db</h1>
             <p>汎用リアルタイム検索データベースシステム v2.0</p>
-            
+
             <div class="badges">
                 <span class="badge">Python 3.8+</span>
                 <span class="badge">Flask 2.0+</span>
                 <span class="badge">Docker Ready</span>
                 <span class="badge">MIT License</span>
             </div>
-            
+
             <div class="cta">
                 <a href="https://github.com/sin1227488801/instant-search-db" class="btn">GitHub で見る</a>
-                <a href="#demo" class="btn btn-secondary">デモを見る</a>
-                <a href="docker-setup.html" class="btn btn-secondary">Docker セットアップ</a>
+                <a href="#demo" class="btn btn-secondary">デモサイト</a>
             </div>
         </div>
-        
-        <div class="demo-section" id="demo">
-            <h2 style="text-align: center; margin-bottom: 2rem; color: #333;">📸 デモンストレーション</h2>
-            <div class="demo-video">
-                <div style="text-align: center; color: #6c757d;">
-                    <h3>🎬 デモ動画</h3>
-                    <p>リアルタイム検索とカテゴリフィルタリング</p>
-                    <p style="font-size: 0.9rem; margin-top: 1rem;">
-                        実際のアプリケーションを起動して<br>
-                        動作を確認してください
-                    </p>
-                </div>
+
+        <div style="text-align: center;">
+            <h3>🚀 クイックスタート</h3>
+            <div
+                style="background: #f8f9fa; padding: 1rem; border-radius: 8px; margin: 1rem 0; text-align: left; font-family: monospace;">
+                git clone https://github.com/sin1227488801/instant-search-db.git<br>
+                cd instant-search-db<br>
+                docker-compose up --build<br>
+                # http://localhost:5000 でアクセス
             </div>
-            
-            <div style="text-align: center;">
-                <h3>🚀 クイックスタート</h3>
-                <div style="background: #f8f9fa; padding: 1rem; border-radius: 8px; margin: 1rem 0; text-align: left; font-family: monospace;">
-                    git clone https://github.com/sin1227488801/instant-search-db.git<br>
-                    cd instant-search-db<br>
-                    docker-compose up --build<br>
-                    # http://localhost:5000 でアクセス
-                </div>
-                <p style="text-align: center; margin-top: 1rem;">
-                    <strong>Dockerが未インストール？</strong> 
-                    <a href="docker-setup.html" style="color: #3498db; text-decoration: none;">📋 セットアップガイド</a>
-                </p>
-            </div>
+            <p style="text-align: center; margin-top: 1rem;">
+                <strong>Dockerが未インストール？</strong>
+                <a href="docker-setup.html" style="color: #3498db; text-decoration: none;">📋 セットアップガイド</a>
+            </p>
         </div>
-        
-        <div class="features">
-            <div class="feature">
-                <h3>🔧 設定ベースカスタマイズ</h3>
-                <p>JSONファイルでカテゴリ、フィールド、UIを完全カスタマイズ。コードを変更することなく、様々な用途に対応できます。</p>
-            </div>
-            
-            <div class="feature">
-                <h3>⚡ 高速検索</h3>
-                <p>SQLite FTS5による高性能全文検索。リアルタイムで検索結果を表示し、快適なユーザー体験を提供します。</p>
-            </div>
-            
-            <div class="feature">
-                <h3>🎨 柔軟なUI</h3>
-                <p>テーマ、レイアウト、アイコンを自由に設定。レスポンシブデザインでモバイルにも対応しています。</p>
-            </div>
-            
-            <div class="feature">
-                <h3>📊 多様な用途</h3>
-                <p>ゲームアイテム、商品カタログ、ドキュメント管理、在庫管理など、幅広い用途に対応可能です。</p>
-            </div>
-            
-            <div class="feature">
-                <h3>🌐 多言語対応</h3>
-                <p>日本語、英語をはじめとする多言語サポート。国際的なプロジェクトにも対応できます。</p>
-            </div>
-            
-            <div class="feature">
-                <h3>🐳 簡単デプロイ</h3>
-                <p>Docker対応で環境構築が簡単。一つのコマンドでアプリケーションを起動できます。</p>
-            </div>
+    </div>
+
+    <div class="features">
+        <div class="feature">
+            <h3>🔧 設定ベースカスタマイズ</h3>
+            <p>JSONファイルでカテゴリ、フィールド、UIを完全カスタマイズ。コードを変更することなく、様々な用途に対応できます。</p>
         </div>
-        
-        <div style="text-align: center; color: white;">
-            <h2>🛠️ 技術スタック</h2>
-            <div class="tech-stack">
-                <div class="tech-item">
-                    <strong>Python</strong><br>
-                    <small>Flask Framework</small>
-                </div>
-                <div class="tech-item">
-                    <strong>SQLite</strong><br>
-                    <small>FTS5 Full-Text Search</small>
-                </div>
-                <div class="tech-item">
-                    <strong>Docker</strong><br>
-                    <small>Containerization</small>
-                </div>
-                <div class="tech-item">
-                    <strong>JavaScript</strong><br>
-                    <small>Responsive UI</small>
-                </div>
+
+        <div class="feature">
+            <h3>⚡ 高速検索</h3>
+            <p>SQLite FTS5による高性能全文検索。リアルタイムで検索結果を表示し、快適なユーザー体験を提供します。</p>
+        </div>
+
+        <div class="feature">
+            <h3>🎨 柔軟なUI</h3>
+            <p>テーマ、レイアウト、アイコンを自由に設定。レスポンシブデザインでモバイルにも対応しています。</p>
+        </div>
+
+        <div class="feature">
+            <h3>📊 多様な用途</h3>
+            <p>ゲームアイテム、商品カタログ、ドキュメント管理、在庫管理など、幅広い用途に対応可能です。</p>
+        </div>
+
+        <div class="feature">
+            <h3>🌐 多言語対応</h3>
+            <p>日本語、英語をはじめとする多言語サポート。国際的なプロジェクトにも対応できます。</p>
+        </div>
+
+        <div class="feature">
+            <h3>🐳 簡単デプロイ</h3>
+            <p>Docker対応で環境構築が簡単。一つのコマンドでアプリケーションを起動できます。</p>
+        </div>
+    </div>
+
+    <div style="text-align: center; color: white;">
+        <h2>🛠️ 技術スタック</h2>
+        <div class="tech-stack">
+            <div class="tech-item">
+                <strong>Python</strong><br>
+                <small>Flask Framework</small>
+            </div>
+            <div class="tech-item">
+                <strong>SQLite</strong><br>
+                <small>FTS5 Full-Text Search</small>
+            </div>
+            <div class="tech-item">
+                <strong>Docker</strong><br>
+                <small>Containerization</small>
+            </div>
+            <div class="tech-item">
+                <strong>JavaScript</strong><br>
+                <small>Responsive UI</small>
             </div>
         </div>
     </div>
+    </div>
 </body>
+
 </html>

@@ -36,7 +36,7 @@ def test_index_page(client):
     """トップページのテスト"""
     response = client.get('/')
     assert response.status_code == 200
-    assert b'instant-search-db' in response.data or 'シレン'.encode('utf-8') in response.data
+    assert b'instant-search-db' in response.data or 'Roguelike Game'.encode('utf-8') in response.data
 
 def test_search_empty_query(client):
     """空のクエリでの検索テスト"""

@@ -2,7 +2,7 @@
   "categories": {
     "武器": {
       "display_name": "武器",
-      "icon": "fas fa-sword",
+      "icon": "fas fa-hammer",
       "emoji_fallback": "⚔️",
       "color": "#e74c3c",
       "description": "攻撃用の武器類"
@@ -37,7 +37,7 @@
     },
     "壺": {
       "display_name": "壺",
-      "icon": "fas fa-vial",
+      "icon": "fas fa-flask",
       "emoji_fallback": "🏺",
       "color": "#16a085",
       "description": "アイテム保存や特殊効果のある壺類"

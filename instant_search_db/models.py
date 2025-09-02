@@ -40,13 +40,6 @@ def load_items_from_csv(config_manager: Optional[ConfigManager] = None):
         function_name="load_items_from_csv"
     )
     
-    try:
-        data_manager = DataManager(config_manager)
-    except Exception as e:
-        error_handler.handle_error(e, context)
-        logger.error(f"Failed to initialize DataManager: {e}")
-        return get_default_items()
-    
     if not os.path.exists(CSV_FILE):
         error = FileNotFoundError(f"CSV file not found: {CSV_FILE}")
         error_handler.handle_error(error, context, "csv_file_not_found")
@@ -54,38 +47,26 @@ def load_items_from_csv(config_manager: Optional[ConfigManager] = None):
         return get_default_items()
     
     try:
-        # DataManagerを使用してデータを読み込み
-        items, validation_result = data_manager.load_data_with_mapping(CSV_FILE)
-        
-        # 警告やエラーを表示
-        if validation_result.warnings:
-            for warning in validation_result.warnings:
-                logger.warning(f"CSV loading warning: {warning}")
-        
-        if validation_result.errors:
-            for error in validation_result.errors:
-                logger.error(f"CSV loading error: {error}")
-            if not validation_result.is_valid:
-                logger.error("データ読み込みに失敗しました。デフォルトデータを使用します。")
-                return get_default_items()
-        
-        # Item オブジェクトを (name, description) タプルに変換（既存コードとの互換性のため）
+        # 直接CSVファイルを読み込み（シンプルな方法）
         result_items = []
-        for item in items:
-            try:
-                # 表示名を取得
-                display_name = item.get_display_name()
-                # 検索テキストを取得
-                search_text = item.get_search_text()
-                result_items.append((display_name, search_text))
-            except Exception as e:
-                item_context = ErrorContext(
-                    function_name="load_items_from_csv",
-                    additional_data={"item": str(item)}
-                )
-                error_handler.handle_error(e, item_context)
-                logger.warning(f"Failed to process item: {e}")
-                continue
+        
+        with open(CSV_FILE, 'r', encoding='utf-8') as file:
+            reader = csv.DictReader(file)
+            
+            for row in reader:
+                try:
+                    category = row.get('category', '').strip()
+                    name = row.get('name', '').strip()
+                    description = row.get('description', '').strip()
+                    
+                    if category and name:
+                        # データベース用の形式: "カテゴリ名 アイテム名"
+                        display_name = f"{category} {name}"
+                        result_items.append((display_name, description))
+                    
+                except Exception as e:
+                    logger.warning(f"Failed to process CSV row: {e}")
+                    continue
         
         logger.info(f"CSVから {len(result_items)} 件のアイテムを読み込みました。")
         return result_items
@@ -255,7 +236,22 @@ def get_category_counts(config_manager: Optional[ConfigManager] = None):
     conn = sqlite3.connect(DB_FILE)
     cursor = conn.cursor()
     
-    # まず実際のデータベースからカテゴリを取得
+    # CSVファイルから直接カテゴリを取得（より正確）
+    csv_categories = set()
+    try:
+        if os.path.exists(CSV_FILE):
+            with open(CSV_FILE, 'r', encoding='utf-8') as f:
+                reader = csv.DictReader(f)
+                for row in reader:
+                    category = row.get('category', '').strip()
+                    if category:
+                        csv_categories.add(category)
+        logger.info(f"CSV categories found: {list(csv_categories)}")
+    except Exception as e:
+        logger.error(f"Failed to read categories from CSV: {e}")
+    
+    # データベースからもカテゴリを取得（フォールバック）
+    db_categories = set()
     try:
         cursor.execute('''
             SELECT DISTINCT SUBSTR(name, 1, INSTR(name, " ") - 1) as category 
@@ -263,11 +259,13 @@ def get_category_counts(config_manager: Optional[ConfigManager] = None):
             WHERE INSTR(name, " ") > 0 
             ORDER BY category
         ''')
-        db_categories = [row[0] for row in cursor.fetchall()]
-        logger.info(f"Database categories found: {db_categories}")
+        db_categories = set(row[0] for row in cursor.fetchall())
+        logger.info(f"Database categories found: {list(db_categories)}")
     except Exception as e:
         logger.error(f"Failed to get categories from database: {e}")
-        db_categories = []
+    
+    # CSVとデータベースの両方からカテゴリを統合
+    all_categories = csv_categories.union(db_categories)
     
     # 設定からカテゴリ情報を取得
     categories_config = {}
@@ -276,18 +274,6 @@ def get_category_counts(config_manager: Optional[ConfigManager] = None):
         logger.info(f"Loaded {len(categories_config)} categories from config")
     except Exception as e:
         logger.warning(f"カテゴリ設定の読み込みエラー: {e}")
-    
-    # 設定が空の場合や失敗した場合は、データベースから実際のカテゴリを使用
-    if not categories_config and db_categories:
-        logger.info("Using database categories as fallback")
-        categories_config = {}
-        for cat in db_categories:
-            categories_config[cat] = {
-                'display_name': cat,
-                'icon': 'fas fa-folder',
-                'emoji_fallback': '📁',
-                'color': '#3498db'
-            }
     
     # 各カテゴリのアイテム数をカウント
     category_counts = {}
@@ -302,21 +288,28 @@ def get_category_counts(config_manager: Optional[ConfigManager] = None):
         else:
             display_name = category_key
         
-        # データベースでカテゴリ名で検索
+        # データベースでカテゴリ名で検索（両方の形式をチェック）
         cursor.execute("SELECT COUNT(*) as count FROM items WHERE name LIKE ?", (f"{display_name}%",))
         result = cursor.fetchone()
         count = result[0] if result else 0
+        
+        # カウントが0の場合、category_keyでも試す
+        if count == 0 and category_key != display_name:
+            cursor.execute("SELECT COUNT(*) as count FROM items WHERE name LIKE ?", (f"{category_key}%",))
+            result = cursor.fetchone()
+            count = result[0] if result else 0
+        
         category_counts[category_key] = count
         logger.debug(f"Category '{category_key}' ({display_name}): {count} items")
     
-    # データベースにあるが設定にないカテゴリも追加
-    for db_cat in db_categories:
-        if db_cat not in category_counts:
-            cursor.execute("SELECT COUNT(*) as count FROM items WHERE name LIKE ?", (f"{db_cat}%",))
+    # 実際のデータにあるが設定にないカテゴリも追加
+    for actual_cat in all_categories:
+        if actual_cat not in category_counts:
+            cursor.execute("SELECT COUNT(*) as count FROM items WHERE name LIKE ?", (f"{actual_cat}%",))
             result = cursor.fetchone()
             count = result[0] if result else 0
-            category_counts[db_cat] = count
-            logger.debug(f"Database category '{db_cat}': {count} items")
+            category_counts[actual_cat] = count
+            logger.debug(f"Actual category '{actual_cat}': {count} items")
     
     conn.close()
     logger.info(f"Category counts: {category_counts}")

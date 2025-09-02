@@ -1,6 +1,6 @@
 {
   "ui": {
-    "title": "風来のシレン アイテム検索",
+    "title": "Roguelike Game アイテム検索",
     "subtitle": "アイテムを素早く検索できます",
     "theme": {
       "primary_color": "#3498db",
@@ -18,7 +18,7 @@
       "compact_mode": false
     },
     "search": {
-      "placeholder_text": "アイテム名や説明で検索...",
+      "placeholder_text": "アイテム名や値段で検索...",
       "min_search_length": 1,
       "search_delay_ms": 300,
       "max_results": 100

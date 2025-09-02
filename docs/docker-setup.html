@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,7 +11,7 @@
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             line-height: 1.6;
@@ -19,32 +20,32 @@
             min-height: 100vh;
             padding: 2rem;
         }
-        
+
         .container {
             max-width: 800px;
             margin: 0 auto;
             background: white;
             border-radius: 15px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
             overflow: hidden;
         }
-        
+
         .header {
             background: #2c3e50;
             color: white;
             padding: 2rem;
             text-align: center;
         }
-        
+
         .header h1 {
             margin-bottom: 0.5rem;
             font-size: 2rem;
         }
-        
+
         .content {
             padding: 2rem;
         }
-        
+
         .os-section {
             margin-bottom: 2rem;
             padding: 1.5rem;
@@ -52,12 +53,12 @@
             border-radius: 10px;
             transition: all 0.3s ease;
         }
-        
+
         .os-section:hover {
             border-color: #3498db;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
-        
+
         .os-title {
             display: flex;
             align-items: center;
@@ -67,11 +68,11 @@
             font-weight: bold;
             color: #2c3e50;
         }
-        
+
         .os-icon {
             font-size: 2rem;
         }
-        
+
         .download-btn {
             display: inline-block;
             background: #3498db;
@@ -83,28 +84,28 @@
             transition: all 0.3s ease;
             margin: 0.5rem 0;
         }
-        
+
         .download-btn:hover {
             background: #2980b9;
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
-        
+
         .steps {
             background: #f8f9fa;
             padding: 1rem;
             border-radius: 8px;
             margin-top: 1rem;
         }
-        
+
         .steps ol {
             margin-left: 1.5rem;
         }
-        
+
         .steps li {
             margin-bottom: 0.5rem;
         }
-        
+
         .note {
             background: #fff3cd;
             border: 1px solid #ffeaa7;
@@ -112,7 +113,7 @@
             border-radius: 8px;
             margin: 1rem 0;
         }
-        
+
         .success {
             background: #d4edda;
             border: 1px solid #c3e6cb;
@@ -120,14 +121,14 @@
             border-radius: 8px;
             margin: 1rem 0;
         }
-        
+
         .back-link {
             text-align: center;
             margin-top: 2rem;
             padding-top: 2rem;
             border-top: 1px solid #dee2e6;
         }
-        
+
         .back-btn {
             background: #6c757d;
             color: white;
@@ -136,33 +137,35 @@
             border-radius: 25px;
             transition: all 0.3s ease;
         }
-        
+
         .back-btn:hover {
             background: #5a6268;
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <div class="header">
             <h1>🐳 Docker セットアップガイド</h1>
             <p>instant-search-db を最も簡単に起動するために</p>
         </div>
-        
+
         <div class="content">
             <div class="note">
                 <strong>💡 なぜDockerが推奨？</strong><br>
                 Dockerを使うと、Python、依存関係、データベースなどすべてが自動でセットアップされ、
                 <code>docker-compose up --build</code> 一つのコマンドで起動できます。
             </div>
-            
+
             <div class="os-section">
                 <div class="os-title">
                     <span class="os-icon">🪟</span>
                     Windows
                 </div>
                 <p><strong>Docker Desktop for Windows</strong> をインストールします。</p>
-                <a href="https://desktop.docker.com/win/main/amd64/Docker%20Desktop%20Installer.exe" class="download-btn">
+                <a href="https://desktop.docker.com/win/main/amd64/Docker%20Desktop%20Installer.exe"
+                    class="download-btn">
                     📥 Docker Desktop をダウンロード
                 </a>
                 <div class="steps">
@@ -176,7 +179,7 @@
                     </ol>
                 </div>
             </div>
-            
+
             <div class="os-section">
                 <div class="os-title">
                     <span class="os-icon">🍎</span>
@@ -202,7 +205,7 @@
                     </ol>
                 </div>
             </div>
-            
+
             <div class="os-section">
                 <div class="os-title">
                     <span class="os-icon">🐧</span>
@@ -211,7 +214,8 @@
                 <p><strong>Docker Engine</strong> をコマンドラインでインストールします。</p>
                 <div class="steps">
                     <strong>インストールコマンド:</strong>
-                    <pre style="background: #2c3e50; color: white; padding: 1rem; border-radius: 5px; overflow-x: auto;">
+                    <pre
+                        style="background: #2c3e50; color: white; padding: 1rem; border-radius: 5px; overflow-x: auto;">
 # 古いバージョンを削除
 sudo apt-get remove docker docker-engine docker.io containerd runc
 
@@ -237,15 +241,16 @@ sudo usermod -aG docker $USER
 </pre>
                 </div>
             </div>
-            
+
             <div class="success">
                 <strong>✅ インストール確認方法</strong><br>
                 ターミナル（コマンドプロンプト）で以下を実行：
-                <pre style="background: #2c3e50; color: white; padding: 0.5rem; border-radius: 3px; margin-top: 0.5rem;">docker --version
+                <pre
+                    style="background: #2c3e50; color: white; padding: 0.5rem; border-radius: 3px; margin-top: 0.5rem;">docker --version
 docker-compose --version</pre>
                 バージョン情報が表示されればインストール成功です！
             </div>
-            
+
             <div class="note">
                 <strong>🚀 インストール後の起動手順</strong><br>
                 <pre style="background: #2c3e50; color: white; padding: 1rem; border-radius: 5px; margin-top: 0.5rem;">
@@ -254,7 +259,7 @@ cd instant-search-db
 docker-compose up --build</pre>
                 <strong>→ http://localhost:5000 でアクセス</strong>
             </div>
-            
+
             <div class="back-link">
                 <a href="../" class="back-btn">← メインページに戻る</a>
                 <a href="https://github.com/sin1227488801/instant-search-db" class="back-btn">GitHub で見る</a>
@@ -262,4 +267,5 @@ docker-compose up --build</pre>
         </div>
     </div>
 </body>
+
 </html>
