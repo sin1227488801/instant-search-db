@@ -23,7 +23,7 @@
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 2rem;
+            padding: 2rem 4rem;
         }
 
         .hero {
@@ -85,7 +85,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
-            margin-bottom: 3rem;
+            margin: 3rem 4rem;
         }
 
         .feature {
@@ -157,13 +157,114 @@
             backdrop-filter: blur(10px);
         }
 
+        /* クイックスタートセクション */
+        .quickstart-section {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin: 3rem 0;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+            text-align: center;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .quickstart-section h3 {
+            color: #667eea;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .code-block {
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            color: #ecf0f1;
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 1.5rem 0;
+            text-align: left;
+            font-family: 'Courier New', monospace;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.3);
+            border-left: 5px solid #3498db;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .code-block::before {
+            content: '$ ';
+            color: #3498db;
+            font-weight: bold;
+        }
+
+        .docker-setup-notice {
+            background: linear-gradient(135deg, #f39c12, #e67e22);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            margin-top: 1.5rem;
+            box-shadow: 0 5px 20px rgba(243, 156, 18, 0.3);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .docker-setup-notice strong {
+            font-size: 1.1rem;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .setup-link {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.2rem;
+            padding: 0.5rem 1rem;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 25px;
+            display: inline-block;
+            margin-top: 0.5rem;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .setup-link:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* 技術スタックセクション */
+        .tech-section {
+            margin: 4rem 0;
+            padding: 0 4rem;
+        }
+
         @media (max-width: 768px) {
             .hero h1 {
                 font-size: 2rem;
             }
 
             .container {
-                padding: 1rem;
+                padding: 1rem 2rem;
+            }
+
+            .features {
+                margin: 2rem 1rem;
+            }
+
+            .quickstart-section {
+                margin: 2rem 0;
+                padding: 1.5rem;
+            }
+
+            .code-block {
+                font-size: 0.9rem;
+                padding: 1.5rem;
+            }
+
+            .tech-section {
+                padding: 0 1rem;
             }
 
             .tech-stack {
@@ -192,19 +293,18 @@
             </div>
         </div>
 
-        <div style="text-align: center;">
+        <div class="quickstart-section">
             <h3>🚀 クイックスタート</h3>
-            <div
-                style="background: #f8f9fa; padding: 1rem; border-radius: 8px; margin: 1rem 0; text-align: left; font-family: monospace;">
+            <div class="code-block">
                 git clone https://github.com/sin1227488801/instant-search-db.git<br>
                 cd instant-search-db<br>
                 docker-compose up --build<br>
                 # http://localhost:5000 でアクセス
             </div>
-            <p style="text-align: center; margin-top: 1rem;">
+            <div class="docker-setup-notice">
                 <strong>Dockerが未インストール？</strong>
-                <a href="docker-setup.html" style="color: #3498db; text-decoration: none;">📋 セットアップガイド</a>
-            </p>
+                <a href="docker-setup.html" class="setup-link">📋 セットアップガイド</a>
+            </div>
         </div>
     </div>
 
@@ -230,7 +330,7 @@
         </div>
     </div>
 
-    <div style="text-align: center; color: white;">
+    <div class="tech-section" style="text-align: center; color: white;">
         <h2>🛠️ 技術スタック</h2>
         <div class="tech-stack">
             <div class="tech-item">
