@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roguelike Game アイテム検索 - デモサイト</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        /* CSS Custom Properties for Theme System */
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2ecc71;
+            --accent-color: #e74c3c;
+            --background-color: #ecf0f1;
+            --text-color: #2c3e50;
+            --border-color: #bdc3c7;
+            --categories-per-row: 5;
+        }
+
+        /* リセット & ベース */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Noto Sans JP', sans-serif;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            min-height: 100vh;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* ヘッダー */
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .logo i {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+        }
+
+        .logo h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: #666;
+            font-weight: 400;
+        }
+
+        /* メインコンテンツ */
+        .main-content {
+            padding: 3rem 0;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* 検索セクション */
+        .search-section {
+            margin-bottom: 3rem;
+        }
+
+        .search-container {
+            position: relative;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .search-box {
+            position: relative;
+            margin-bottom: 1rem;
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 1.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #999;
+            font-size: 1.2rem;
+            z-index: 2;
+        }
+
+        #search-input {
+            width: 100%;
+            padding: 1.2rem 1.5rem 1.2rem 4rem;
+            font-size: 1.1rem;
+            border: none;
+            border-radius: 50px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            outline: none;
+        }
+
+        #search-input:focus {
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .clear-search-btn {
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: #999;
+            font-size: 1.2rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            display: none;
+        }
+
+        .clear-search-btn:hover {
+            background: rgba(0, 0, 0, 0.1);
+            color: var(--accent-color);
+        }
+
+        .search-stats {
+            text-align: center;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1rem;
+            margin-top: 1rem;
+        }
+
+        /* カテゴリナビゲーション */
+        .category-navigation {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        .navigation-content h3 {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--text-color);
+            font-size: 1.3rem;
+        }
+
+        .navigation-content h3 i {
+            margin-right: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        .category-buttons {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .category-btn {
+            background: white;
+            border: none;
+            border-radius: 15px;
+            padding: 1.5rem 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .category-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .category-btn.active {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .category-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--category-color, var(--primary-color));
+            border-radius: 15px 15px 0 0;
+        }
+
+        .category-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: var(--category-color, var(--primary-color));
+        }
+
+        .category-name {
+            display: block;
+            font-weight: 600;
+            color: var(--text-color);
+            margin-bottom: 0.3rem;
+        }
+
+        .category-count {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .navigation-text {
+            text-align: center;
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        .navigation-text i {
+            margin-right: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        /* 検索結果 */
+        .results-section {
+            margin-top: 2rem;
+        }
+
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .result-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 1.5rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            animation: fadeInUp 0.6s ease forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .result-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .item-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .item-icon {
+            font-size: 2rem;
+            flex-shrink: 0;
+        }
+
+        .item-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-color);
+            margin: 0;
+        }
+
+        .item-description {
+            color: #666;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        mark {
+            background: linear-gradient(135deg, #fff3cd, #ffeaa7);
+            padding: 0.1rem 0.3rem;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+
+        /* 結果なし */
+        .no-results {
+            text-align: center;
+            padding: 3rem 2rem;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .no-results i {
+            font-size: 4rem;
+            color: #ddd;
+            margin-bottom: 1rem;
+        }
+
+        .no-results h3 {
+            color: var(--text-color);
+            margin-bottom: 1rem;
+        }
+
+        .no-results p {
+            color: #666;
+            margin-bottom: 2rem;
+        }
+
+        .suggestion-keywords {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .keyword-tag {
+            background: var(--primary-color);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .keyword-tag:hover {
+            background: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+
+        /* フッター */
+        .footer {
+            background: rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 2rem 0;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .footer-content p {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-note {
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        /* デモ通知バナー */
+        .demo-banner {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .demo-banner i {
+            margin-right: 0.5rem;
+        }
+
+        .demo-banner a {
+            color: white;
+            text-decoration: underline;
+            font-weight: bold;
+        }
+
+        /* レスポンシブ */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 1rem;
+            }
+
+            .logo h1 {
+                font-size: 2rem;
+            }
+
+            .category-buttons {
+                grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+                gap: 0.8rem;
+            }
+
+            .category-btn {
+                padding: 1rem 0.5rem;
+            }
+
+            .results-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .result-card {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- デモ通知バナー -->
+    <div class="demo-banner">
+        <i class="fas fa-info-circle"></i>
+        これはデモサイトです。実際のアプリケーションを使用するには
+        <a href="#demo">セットアップガイド</a>をご覧ください。
+    </div>
+
+    <!-- ヘッダー -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <i class="fas fa-search"></i>
+                <h1>Roguelike Game アイテム検索</h1>
+            </div>
+            <p class="subtitle">アイテムを素早く検索できます</p>
+        </div>
+    </header>
+
+    <!-- メインコンテンツ -->
+    <main class="main-content">
+        <div class="container">
+            <!-- 検索セクション -->
+            <section class="search-section">
+                <div class="search-container">
+                    <div class="search-box">
+                        <i class="fas fa-search search-icon"></i>
+                        <input type="text" id="search-input" placeholder="アイテム名や説明で検索..." autocomplete="off">
+                        <button type="button" id="clear-search" class="clear-search-btn" title="検索をクリア">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                    <div class="search-stats" id="search-stats"></div>
+                </div>
+            </section>
+
+            <!-- ジャンル別ナビゲーション -->
+            <section class="category-navigation" id="category-navigation">
+                <div class="navigation-content">
+                    <h3><i class="fas fa-th-large"></i> ジャンル別検索</h3>
+                    <div class="category-buttons" id="category-buttons">
+                        <!-- カテゴリボタンはJavaScriptで動的生成 -->
+                    </div>
+                    <p class="navigation-text">
+                        <i class="fas fa-mouse-pointer"></i>
+                        ジャンルをクリックして該当アイテムを表示
+                    </p>
+                </div>
+            </section>
+
+            <!-- 検索結果 -->
+            <section class="results-section">
+                <div id="results-container"></div>
+            </section>
+        </div>
+    </main>
+
+    <!-- フッター -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>© 2025 Roguelike Game アイテム検索</p>
+            <p class="footer-note">アイテムを素早く検索できます</p>
+        </div>
+    </footer>
+
+    <!-- モックデータとスクリプト -->
+    <script src="demo-data.js"></script>
+    <script>
+        // DOM要素の取得
+        const searchInput = document.getElementById('search-input');
+        const clearSearchBtn = document.getElementById('clear-search');
+        const resultsContainer = document.getElementById('results-container');
+        const searchStats = document.getElementById('search-stats');
+        const categoryNavigation = document.getElementById('category-navigation');
+        const categoryButtons = document.getElementById('category-buttons');
+
+        let debounceTimer; // デバウンス処理のためのタイマー
+
+        // 初期化
+        document.addEventListener('DOMContentLoaded', () => {
+            initializeCategoryButtons();
+        });
+
+        // カテゴリボタンを初期化
+        function initializeCategoryButtons() {
+            const categoryCounts = getCategoryCounts();
+            
+            Object.keys(categories).forEach(categoryKey => {
+                const category = categories[categoryKey];
+                const count = categoryCounts[categoryKey] || 0;
+                
+                const button = document.createElement('button');
+                button.className = 'category-btn';
+                button.setAttribute('data-category', categoryKey);
+                button.style.setProperty('--category-color', category.color);
+                
+                button.innerHTML = `
+                    <div class="category-icon">
+                        <i class="${category.icon}" aria-hidden="true"></i>
+                        <span class="emoji-fallback">${category.emoji_fallback}</span>
+                    </div>
+                    <span class="category-name">${category.display_name}</span>
+                    <span class="category-count">${count}種類</span>
+                `;
+                
+                button.addEventListener('click', () => handleCategoryClick(categoryKey, category.display_name));
+                categoryButtons.appendChild(button);
+            });
+        }
+
+        // クリアボタンの表示/非表示を制御
+        function toggleClearButton() {
+            const hasValue = searchInput.value.trim().length > 0;
+            clearSearchBtn.style.display = hasValue ? 'flex' : 'none';
+            clearSearchBtn.style.opacity = hasValue ? '1' : '0';
+        }
+
+        // クリアボタンのクリックイベント
+        clearSearchBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            searchInput.value = '';
+            clearSearchBtn.style.display = 'none';
+            resultsContainer.innerHTML = '';
+            searchStats.innerHTML = '';
+            categoryNavigation.style.display = 'block';
+            // アクティブ状態をリセット
+            document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
+            searchInput.focus();
+        });
+
+        // 検索入力イベント
+        searchInput.addEventListener('input', () => {
+            clearTimeout(debounceTimer);
+
+            const keyword = searchInput.value.trim();
+            
+            // クリアボタンの表示/非表示を制御
+            toggleClearButton();
+
+            if (keyword.length === 0) {
+                categoryNavigation.style.display = 'block';
+                // アクティブ状態をリセット
+                document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
+                resultsContainer.innerHTML = '';
+                searchStats.innerHTML = '';
+                return;
+            } else {
+                categoryNavigation.style.display = 'none';
+            }
+
+            // ローディング表示
+            searchStats.innerHTML = '<i class="fas fa-spinner fa-spin"></i> 検索中...';
+
+            debounceTimer = setTimeout(() => {
+                performSearch(keyword);
+            }, 300);
+        });
+
+        // カテゴリボタンクリック処理
+        function handleCategoryClick(categoryKey, displayName) {
+            // ボタンにアクティブ状態を追加
+            document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
+            document.querySelector(`[data-category="${categoryKey}"]`).classList.add('active');
+
+            searchInput.value = displayName;
+            toggleClearButton();
+            categoryNavigation.style.display = 'none';
+
+            // ローディング表示
+            searchStats.innerHTML = '<i class="fas fa-spinner fa-spin"></i> 検索中...';
+
+            setTimeout(() => {
+                performCategorySearch(categoryKey, displayName);
+            }, 300);
+        }
+
+        // 検索実行
+        function performSearch(keyword) {
+            const results = mockData.filter(item => 
+                item.name.toLowerCase().includes(keyword.toLowerCase()) ||
+                item.description.toLowerCase().includes(keyword.toLowerCase())
+            );
+            
+            displayResults(results, keyword);
+        }
+
+        // カテゴリ検索実行
+        function performCategorySearch(categoryKey, displayName) {
+            const results = mockData.filter(item => item.category === categoryKey);
+            displayResults(results, displayName);
+        }
+
+        // 結果表示関数
+        function displayResults(results, keyword) {
+            resultsContainer.innerHTML = '';
+
+            // 検索統計
+            const resultCount = results.length;
+            const categoryInfo = getCategoryInfo(keyword);
+            searchStats.innerHTML = `
+                <i class="fas fa-chart-bar"></i> 
+                ${categoryInfo}「${keyword}」の検索結果: ${resultCount}件
+            `;
+
+            if (resultCount === 0) {
+                resultsContainer.innerHTML = `
+                    <div class="no-results">
+                        <i class="fas fa-search"></i>
+                        <h3>該当するアイテムが見つかりませんでした</h3>
+                        <p>別のキーワードで検索してみてください</p>
+                        <div class="suggestion-keywords">
+                            <span class="keyword-tag" onclick="searchKeyword('武器')">武器</span>
+                            <span class="keyword-tag" onclick="searchKeyword('盾')">盾</span>
+                            <span class="keyword-tag" onclick="searchKeyword('壺')">壺</span>
+                            <span class="keyword-tag" onclick="searchKeyword('草')">草</span>
+                        </div>
+                    </div>
+                `;
+                return;
+            }
+
+            // 結果リスト作成
+            const resultsGrid = document.createElement('div');
+            resultsGrid.className = 'results-grid';
+
+            results.forEach((item, index) => {
+                const resultCard = document.createElement('div');
+                resultCard.className = 'result-card';
+                resultCard.style.animationDelay = `${index * 0.1}s`;
+
+                // アイテムタイプのアイコン決定
+                let icon = getItemIcon(item);
+
+                resultCard.innerHTML = `
+                    <div class="item-header">
+                        <span class="item-icon">${icon}</span>
+                        <h3 class="item-name">${highlightKeyword(item.name, keyword)}</h3>
+                    </div>
+                    <div class="item-description">
+                        ${highlightKeyword(item.description, keyword)}
+                    </div>
+                `;
+
+                resultsGrid.appendChild(resultCard);
+            });
+
+            resultsContainer.appendChild(resultsGrid);
+        }
+
+        // アイテムアイコンを取得
+        function getItemIcon(item) {
+            const categoryEmoji = categories[item.category]?.emoji_fallback || '📦';
+            
+            // より具体的なアイコン判定
+            if (item.name.includes('つるはし')) return '⛏️';
+            if (item.name.includes('こん棒')) return '🏏';
+            if (item.name.includes('剣')) return '⚔️';
+            if (item.name.includes('かまいたち')) return '🌪️';
+            if (item.name.includes('保存')) return '📦';
+            if (item.name.includes('変化')) return '🔄';
+            if (item.name.includes('薬草')) return '🌿';
+            if (item.name.includes('復活')) return '✨';
+            if (item.name.includes('おにぎり')) return '🍙';
+            
+            return categoryEmoji;
+        }
+
+        // キーワードハイライト関数
+        function highlightKeyword(text, keyword) {
+            if (!keyword) return text;
+            const regex = new RegExp(`(${keyword})`, 'gi');
+            return text.replace(regex, '<mark>$1</mark>');
+        }
+
+        // キーワード検索関数
+        function searchKeyword(keyword) {
+            searchInput.value = keyword;
+            toggleClearButton();
+            searchInput.focus();
+            searchInput.dispatchEvent(new Event('input'));
+        }
+
+        // カテゴリ情報を取得する関数
+        function getCategoryInfo(keyword) {
+            const categoryInfo = {
+                '武器': '⚔️ 武器カテゴリ - ',
+                '盾': '🛡️ 盾カテゴリ - ',
+                '壺': '🏺 壺カテゴリ - ',
+                '草・種': '🌿 草・種カテゴリ - ',
+                '巻物': '📜 巻物カテゴリ - ',
+                '杖': '🪄 杖カテゴリ - ',
+                '腕輪': '💍 腕輪カテゴリ - ',
+                '矢': '🏹 矢カテゴリ - ',
+                'にぎり': '🍙 にぎりカテゴリ - ',
+                'その他': '❓ その他カテゴリ - '
+            };
+            return categoryInfo[keyword] || '';
+        }
+    </script>
+</body>
+</html>
